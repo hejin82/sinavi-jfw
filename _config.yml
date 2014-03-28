@@ -60,7 +60,7 @@ jfw-test:
 jfw-data-mongo-test:
   version : 1.0.0.0
 
-baseurl : http://ctc-g.github.io/sinavi-jfw
+baseurl : http://ctc-g.github.io/sinavi-jfw/
 github_project_pages : http://github.com/ctc-g/sinavi-jfw
 bamboo_pages : 
 jira_pages : 
