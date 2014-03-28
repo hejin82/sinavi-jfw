@@ -9,7 +9,7 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : SINAVI J-Framework
-tagline: ease of development
+tagline: 
 author :
   name : ITOCHU Techno-Solutions Corporation.
   site : http://www.ctc-g.co.jp/
