@@ -26,4 +26,4 @@ ViewIdConstraintアノテーションを利用するとこで、ある画面か�
 
 こららの詳細は [ViewIdConstraint][ViewIdConstraint] アノテーションのJavadocを参照してください。
 
-[ViewIdConstraint]: {{ site.baseurl}}docs/projects/jfw3-web-core/1.0.0.0.M1/api/jp/co/ctc_g/jse/vid/ViewIdConstraint.html
+[ViewIdConstraint]: {{ site.baseurl}}docs/projects/jfw-web-core/1.0.0.0.M1/api/jp/co/ctc_g/jse/vid/ViewIdConstraint.html

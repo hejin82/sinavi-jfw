@@ -54,4 +54,4 @@ pankuzu属性にtrueを指定する必要があります。
 ※このタグライブラリの詳細は [PankuzuTag][PankuzuTag] のjavadocを参照してください。
 
 
-[PankuzuTag]:{{ site.baseurl }}docs/projects/jfw3-web-core/{{ site.jframework.version }}/api/jp/co/ctc_g/jse/vid/PankuzuTag.html
+[PankuzuTag]:{{ site.baseurl }}docs/projects/jfw-web-core/{{ site.jframework.version }}/api/jp/co/ctc_g/jse/vid/PankuzuTag.html
