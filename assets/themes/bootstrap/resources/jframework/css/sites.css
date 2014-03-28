@@ -1,0 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Nunito);
+
+h1 {
+  font-family: 'Nunito',"メイリオ","ＭＳ Ｐゴシック",sans-serif;
+}
+
+h2 {
+  color: #7f7f7f;
+}
+
+.table thead tr th {
+  color: #FFFFFF;
+  background-color: #2980B9;
+}
+
+.carousel-inner a {
+  color: #FFFFFF;
+}

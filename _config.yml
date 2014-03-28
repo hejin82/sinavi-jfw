@@ -1,0 +1,83 @@
+# This is the default format. 
+# For more see: http://jekyllrb.com/docs/permalinks/
+permalink: /:categories/:year/:month/:day/:title 
+
+exclude: [".rvmrc", ".rbenv-version", "Rakefile", "Gemfile", "Gemfile.lock", "vendor"]
+pygments: true
+
+# Themes are encouraged to use these universal variables 
+# so be sure to set them if your theme uses them.
+#
+title : SINAVI J-Framework
+tagline: ease of development
+author :
+  name : ITOCHU Techno-Solutions Corporation.
+  site : http://www.ctc-g.co.jp/
+  email : sinavi-jframework@ctc-g.co.jp
+
+jfw-util-core:
+  version : 1.0.0.0
+
+jfw-resource-core:
+  version : 1.0.0.0
+
+jfw-exception-core:
+  version : 1.0.0.0
+
+jfw-web-core:
+  version : 1.0.0.0
+
+jfw-web-util-core:
+  version : 1.0.0.0
+
+jfw-mybatis-core:
+  version : 1.0.0.0
+
+jfw-validation-core:
+  version : 1.0.0.0
+
+jfw-amqp-core:
+  version : 1.0.0.0
+
+jfw-csv-core:
+  version : 1.0.0.0
+
+jfw-excel-core:
+  version : 1.0.0.0
+
+jfw-rest-core:
+  version : 1.0.0.0
+
+jfw-rest-plugin-jersey:
+  version : 1.0.0.0
+
+jfw-rest-plugin-springmvc:
+  version : 1.0.0.0
+
+jfw-test:
+  version : 1.0.0.0
+
+jfw-data-mongo-test:
+  version : 1.0.0.0
+
+production_url : http://ctc-g.github.io/sinavi-jfw
+github_project_pages : http://github.com/ctc-g/sinavi-jfw
+bamboo_pages : 
+jira_pages : 
+confluence_pages : 
+
+# All Jekyll-Bootstrap specific configurations are namespaced into this hash
+#
+JB :
+  version : 0.3.0
+  BASE_PATH : false
+  ASSET_PATH : false
+   
+  # Settings for analytics helper
+  # Set 'provider' to the analytics provider you want to use.
+  # Set 'provider' to false to turn analytics off globally.
+  #        
+  # analytics :
+  #  provider : google 
+  #  google : 
+  #      tracking_id : 'UA-***'

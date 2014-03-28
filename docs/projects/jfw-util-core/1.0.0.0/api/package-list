@@ -1,0 +1,7 @@
+jp.co.ctc_g.jfw
+jp.co.ctc_g.jfw.core.consts
+jp.co.ctc_g.jfw.core.internal
+jp.co.ctc_g.jfw.core.util
+jp.co.ctc_g.jfw.core.util.jdbc
+jp.co.ctc_g.jfw.core.util.porter
+jp.co.ctc_g.jfw.core.util.typeconverter

@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+  <div id="carousel-jfw" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-jfw" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-jfw" data-slide-to="1"></li>
+      <li data-target="#carousel-jfw" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="{{ BASE_PATH }}/images/slide1.jpg"></img>
+        <div class="carousel-caption">
+         <h3>生産性の向上</h3>
+         <p>基盤機能やユーティリティによる高い再利用性</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="{{ BASE_PATH }}/images/slide2.jpg"></img>
+        <div class="carousel-caption">
+          <h3>安定した品質</h3>
+          <p>業界標準のオープンソースフレームワークの採用</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="{{ BASE_PATH }}/images/slide3.jpg"></img>
+        <div class="carousel-caption">
+          <h3>技術リスク低減</h3>
+          <p>実装方式の標準化</p>
+        </div>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#carousel-jfw" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-jfw" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+</div>
+
+{{ content }}
