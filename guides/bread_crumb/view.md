@@ -37,4 +37,4 @@ SINAVI J-Frameworkではパンくず表示時に以下のキーで設定され�
 
 というように設定することで実現できます。  
 
-[PankuzuTag]:{{ site.baseurl }}docs/projects/jfw-web-core/1.0.0.0.M1/api/jp/co/ctc_g/jse/vid/PankuzuTag.html
+[PankuzuTag]:{{ site.baseurl }}docs/projects/jfw-web-core/{{ site.jfw-web-core.version }}/api/jp/co/ctc_g/jse/vid/PankuzuTag.html
