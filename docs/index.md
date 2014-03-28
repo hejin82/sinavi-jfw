@@ -230,7 +230,7 @@ group: navigation
     </div>
   </div>
   <div class="col-md-3">
-    <a href="{{ site.baseurl}}docs/projects/jfw-test/{{ site.jfw-data-mongo-test.version }}/api/index.html">MongoDB Testコンポーネント</a>
+    <a href="{{ site.baseurl}}docs/projects/jfw-data-mongo-test/{{ site.jfw-data-mongo-test.version }}/api/index.html">MongoDB Testコンポーネント</a>
   </div>
   <div class="col-md-1">
     <div class="dropdown">
@@ -238,9 +238,9 @@ group: navigation
         <span class="fa fa-bars"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmTest">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/test/jfw-test"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/test/jfw-data-mongo-test"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-test"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-data-mongo-test"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
       </ul>
     </div>
   </div>
