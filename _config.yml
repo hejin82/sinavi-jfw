@@ -70,7 +70,7 @@ confluence_pages :
 #
 JB :
   version : 0.3.0
-  BASE_PATH : false
+  BASE_PATH : http://ctc-g.github.io/sinavi-jfw
   ASSET_PATH : false
    
   # Settings for analytics helper
