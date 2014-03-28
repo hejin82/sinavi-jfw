@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+  namespace="jp.co.ctc_g.jfw.core.jdbc.JxSqlSessionIntegrationTestBeanDao">
+
+  <select id="listWithPaginating::count" parameterType="JxSqlSessionIntegrationTestCriteria"
+    resultType="int">
+    select
+    count(*)
+    from (
+    select
+    *
+    from
+    JX_SQL_SESSION_INTEGRATION_TEST
+    order by ID
+    )
+  </select>
+
+  <select id="listWithPaginating" parameterType="JxSqlSessionIntegrationTestCriteria"
+    resultType="JxSqlSessionIntegrationTestBean">
+    select
+    *
+    from
+    JX_SQL_SESSION_INTEGRATION_TEST
+    order by ID
+    limit #{limit} offset #{offset}
+  </select>
+
+  <select id="listWithBoundsWithPaginating::count" parameterType="JxSqlSessionIntegrationTestCriteria"
+    resultType="int">
+    select
+    count(*)
+    from (
+    select
+    *
+    from
+    JX_SQL_SESSION_INTEGRATION_TEST
+    order by ID
+    )
+  </select>
+
+  <select id="listWithBoundsWithPaginating" parameterType="JxSqlSessionIntegrationTestCriteria"
+    resultType="JxSqlSessionIntegrationTestBean">
+    select
+    *
+    from
+    JX_SQL_SESSION_INTEGRATION_TEST
+    order by ID
+  </select>
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+  <context:annotation-config />
+
+  <aop:config>
+    <aop:pointcut id="facadePointcut" expression="execution(* * ..*Facade.*(..))" />
+    <aop:pointcut id="servicePointcut" expression="execution(* * ..*Service.*(..))" />
+    <aop:pointcut id="daoPointcut" expression="execution(* * ..*Dao.*(..))" />
+    <aop:advisor pointcut-ref="facadePointcut" advice-ref="transactionAdvice" />
+    <aop:advisor pointcut-ref="servicePointcut" advice-ref="transactionAdvice" />
+  </aop:config>
+
+  <!-- Transaction Advice -->
+  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="find*" propagation="SUPPORTS"
+        isolation="READ_COMMITTED" read-only="true" rollback-for="java.lang.Throwable" />
+      <tx:method name="list*" propagation="SUPPORTS"
+        isolation="READ_COMMITTED" read-only="true" rollback-for="java.lang.Throwable" />
+      <tx:method name="create*" propagation="REQUIRED"
+        isolation="READ_COMMITTED" rollback-for="java.lang.Throwable" />
+      <tx:method name="update*" propagation="REQUIRED"
+        isolation="READ_COMMITTED" rollback-for="java.lang.Throwable" />
+      <tx:method name="remove*" propagation="REQUIRED"
+        isolation="READ_COMMITTED" rollback-for="java.lang.Throwable" />
+    </tx:attributes>
+  </tx:advice>
+
+  <!-- Transaction Manager -->
+  <bean id="transactionManager"
+    class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource" />
+  </bean>
+  
+  <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+    <constructor-arg index="0" ref="sqlSessionFactory" />
+  </bean>
+
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="sqlSessionFactoryBuilder" ref="jxSqlSessionFactoryBuilder" />
+    <property name="dataSource" ref="dataSource" />
+    <property name="mapperLocations"
+        value="classpath*:jp/co/ctc_g/jfw/core/jdbc/**/*.mapper.xml" />
+    <property name="typeAliasesPackage" value="jp.co.ctc_g.jfw.core.jdbc" />
+  </bean>
+
+  <bean class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    <property name="mapperInterface" value="jp.co.ctc_g.jfw.core.jdbc.JxSqlSessionIntegrationTestBeanMapper" />
+  </bean>
+  
+  <bean id="jxSqlSessionFactoryBuilder"
+            class="jp.co.ctc_g.jfw.core.jdbc.JxSqlSessionFactoryBuilder" />
+            
+  <bean class="jp.co.ctc_g.jfw.core.jdbc.JxSqlSessionIntegrationTestBeanDaoImpl" />
+
+  <!-- Data Source -->
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    destroy-method="close">
+    <property name="driverClassName" value="${jdbc.driver}" />
+    <property name="url" value="${jdbc.url}" />
+    <property name="username" value="${jdbc.username}" />
+    <property name="password" value="${jdbc.password}" />
+    <property name="initialSize" value="3" />
+    <property name="maxActive" value="10" />
+    <property name="maxIdle" value="10" />
+    <property name="maxWait" value="10000" />
+    <property name="minIdle" value="3" />
+    <property name="removeAbandoned" value="true" />
+    <property name="removeAbandonedTimeout" value="300" />
+    <property name="logAbandoned" value="false" />
+    <property name="accessToUnderlyingConnectionAllowed" value="true" />
+  </bean>
+
+  <!-- JDBC Connection -->
+  <bean id="jdbcConnectionConfig"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location" value="classpath:/Jdbc.properties" />
+  </bean>
+
+</beans>

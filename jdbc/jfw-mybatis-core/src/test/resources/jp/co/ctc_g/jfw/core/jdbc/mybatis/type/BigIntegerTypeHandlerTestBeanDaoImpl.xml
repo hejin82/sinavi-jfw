@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.ctc_g.jfw.core.jdbc.mybatis.type.BigIntegerTypeHandlerTestBeanDaoImpl">
+
+  <sql id="selectColumns">
+        ID,
+        NUM19,
+        NUM25,
+        NUM30
+  </sql>
+
+  <select id="findById" parameterType="integer" resultType="BigIntegerTypeHandlerTestBean">
+    /* jp.co.ctc_g.jse.core.jdbc.mybatis.type.BigIntegerTypeHandlerTestBeanDaoImpl.findById */
+    SELECT
+        <include refid="selectColumns" />
+    FROM
+        TYPE_HANDLER_BIGINTEGER_INTEGRATION_TEST
+    WHERE
+      ID = #{id}
+  </select>
+
+  <insert id="create" parameterType="BigIntegerTypeHandlerTestBean">
+    <selectKey order="BEFORE" keyProperty="id" resultType="Integer" statementType="PREPARED">
+    SELECT TYPE_HANDLER_BIGINTEGER_INTEGRATION_TEST_SEQUENCE.nextval AS terminalId FROM DUAL
+    </selectKey>
+    /* jp.co.ctc_g.jse.core.jdbc.mybatis.type.BigIntegerTypeHandlerTestBeanDaoImpl.create */
+    INSERT INTO
+      TYPE_HANDLER_BIGINTEGER_INTEGRATION_TEST (
+        ID ,
+        NUM19 ,
+        NUM25 ,
+        NUM30
+    ) VALUES (
+        #{id, javaType=integer, jdbcType=DECIMAL} ,
+        #{num19, javaType=java.math.BigInteger, jdbcType=DECIMAL} ,
+        #{num25, javaType=java.math.BigInteger, jdbcType=DECIMAL} ,
+        #{num30, javaType=java.math.BigInteger, jdbcType=DECIMAL}
+    )
+  </insert>
+
+  <update id="update" parameterType="BigIntegerTypeHandlerTestBean">
+    /* jp.co.ctc_g.jse.core.jdbc.mybatis.type.BigIntegerTypeHandlerTestBeanDaoImpl.update */
+    UPDATE
+      TYPE_HANDLER_BIGINTEGER_INTEGRATION_TEST
+      <set>
+        NUM19 = #{num19, javaType=java.math.BigInteger, jdbcType=DECIMAL} ,
+        NUM25 = #{num25, javaType=java.math.BigInteger, jdbcType=DECIMAL} ,
+        NUM30 = #{num30, javaType=java.math.BigInteger, jdbcType=DECIMAL} ,
+      </set>
+    WHERE
+      ID = #{id}
+  </update>
+
+  <update id="delete" parameterType="BigIntegerTypeHandlerTestBean">
+    /* jp.co.ctc_g.jse.core.jdbc.mybatis.type.BigIntegerTypeHandlerTestBeanDaoImpl.delete */
+    DELTE FROM
+      TYPE_HANDLER_BIGINTEGER_INTEGRATION_TEST
+    WHERE
+      ID = #{id}
+  </update>
+</mapper>

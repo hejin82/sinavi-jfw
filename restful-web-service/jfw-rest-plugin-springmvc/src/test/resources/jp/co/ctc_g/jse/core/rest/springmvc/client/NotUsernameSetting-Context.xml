@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+  <bean id="not" class="jp.co.ctc_g.jse.core.rest.springmvc.client.ProxyClientHttpRequestFactory">
+    <property name="proxyHost" value="ctcpro.ctc-g.co.jp" />
+    <property name="proxyPort" value="8080" />
+    <property name="authentication" value="true" />
+  </bean>
+
+</beans>

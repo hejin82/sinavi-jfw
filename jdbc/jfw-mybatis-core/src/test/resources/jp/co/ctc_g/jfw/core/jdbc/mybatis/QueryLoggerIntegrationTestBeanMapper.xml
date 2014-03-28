@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+  namespace="jp.co.ctc_g.jfw.core.jdbc.mybatis.QueryLoggerIntegrationTestBeanMapper">
+
+  <select id="findBySimpleQuery"
+          statementType="STATEMENT"
+          resultType="QueryLoggerTestBean">
+    select
+    id,
+    str,
+    sql_date as sqlDate,
+    tm,
+    ts,
+    utl_date as utlDate
+    from QUERY_LOGGER_INTEGRATION_TEST
+    where id = 1
+  </select>
+
+  <select id="findByPreparedQuery"
+          parameterType="QueryLoggerTestBean"
+          resultType="QueryLoggerTestBean">
+    select
+    id,
+    str,
+    sql_date as sqlDate,
+    tm,
+    ts,
+    utl_date as utlDate
+    from QUERY_LOGGER_INTEGRATION_TEST
+    where id = #{id}
+  </select>
+
+  <insert id="create"
+          parameterType="QueryLoggerTestBean">
+    insert into QUERY_LOGGER_INTEGRATION_TEST
+    (id,
+     str,
+     sql_date,
+     tm,
+     ts,
+     utl_date) values
+     (nextval('QUERY_LOGGER_INTEGRATION_TEST_SEQUENCE'),
+      #{str},
+      #{sqlDate},
+      #{tm},
+      #{ts},
+      #{utlDate})
+  </insert>
+
+  <insert id="createPullGeneratedKey"
+          parameterType="QueryLoggerTestBean">
+    <selectKey keyProperty="id"
+               resultType="integer"
+               order="AFTER"
+               statementType="PREPARED">
+      select id from QUERY_LOGGER_INTEGRATION_TEST where str = #{str}
+    </selectKey>
+    insert into QUERY_LOGGER_INTEGRATION_TEST
+    (id,
+     str,
+     sql_date,
+     tm,
+     ts,
+     utl_date) values
+     (nextval('QUERY_LOGGER_INTEGRATION_TEST_SEQUENCE'),
+      #{str},
+      #{sqlDate},
+      #{tm},
+      #{ts},
+      #{utlDate})
+  </insert>
+
+  <select id="procedure"
+          statementType="CALLABLE"
+          parameterType="string"
+          resultType="string">
+    call upper(#{s})
+  </select>
+
+</mapper>

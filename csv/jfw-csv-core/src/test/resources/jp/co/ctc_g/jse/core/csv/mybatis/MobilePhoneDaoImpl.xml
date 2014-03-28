@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.co.ctc_g.jse.core.csv.mybatis.MobilePhoneDaoImpl">
+
+  <sql id="selectColumns">
+    TERMINAL_ID,
+    TERMINAL_NAME,
+    SALES_DATE,
+    FLASH_LEVEL ,
+    VERSION,
+    DEL_FLAG,
+    CREATE_STAMP,
+    CREATE_USER_ID,
+    UPDATE_STAMP,
+    UPDATE_USER_ID
+  </sql>
+
+  <sql id="whereStatements">
+    <where>
+      <if test="fromTerminalId != null">
+        and TERMINAL_ID &gt;= #{fromTerminalId}
+      </if>
+      <if test="toTerminalId != null">
+        and TERMINAL_ID &lt;= #{toTerminalId}
+      </if>
+      <if test="terminalName != null and terminalName != ''">
+        and TERMINAL_NAME LIKE '%' || #{terminalName} || '%'
+      </if>
+      <if test="fromSalesDate != null">
+        and SALES_DATE &gt;= #{fromSalesDate}
+      </if>
+      <if test="toSalesDate != null">
+        and SALES_DATE &lt;= #{toSalesDate}
+      </if>
+      <if test="flashLevel != null">
+        and FLASH_LEVEL = #{flashLevel}
+      </if>
+      and DEL_FLAG = '0'
+    </where>
+  </sql>
+
+  <select id="jp.co.ctc_g.jse.core.csv.mybatis.MobilePhoneDaoImpl.listBy" parameterType="jp.co.ctc_g.jse.core.csv.mybatis.MobilePhoneCriteria" resultType="jp.co.ctc_g.jse.core.csv.mybatis.MobilePhone">
+    select  <include refid="selectColumns" />
+    from     MOBILE_PHONE
+    <include refid="whereStatements" />
+    order by TERMINAL_ID
+  </select>
+
+</mapper>

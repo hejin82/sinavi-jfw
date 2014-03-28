@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:rabbit="http://www.springframework.org/schema/rabbit" xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd">
+
+  <context:property-placeholder location="classpath:/jp/co/ctc_g/jse/core/amqp/retry/RabbitMQ.properties" />
+  
+  <rabbit:connection-factory id="connectionFactory" 
+      addresses="${rabbitmq.addresses}"
+      username="${rabbitmq.username}" 
+      password="${rabbitmq.password}"
+      channel-cache-size="${rabbitmq.channel-cache-size}" />
+      
+  <rabbit:template id="amqpTemplate" 
+      connection-factory="connectionFactory"
+      routing-key="jfw3-amqp-showcase"
+      message-converter="jsonMessageConverter" />
+
+  <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.JsonMessageConverter">
+    <property name="createMessageIds" value="true" />
+  </bean>
+
+  <bean id="recoverer" class="jp.co.ctc_g.jse.core.amqp.retry.ExceptionMessageExchanger">
+    <property name="amqpTemplate" ref="amqpTemplate" />
+    <property name="exchange" value="test.exchange" />
+  </bean>
+
+</beans>

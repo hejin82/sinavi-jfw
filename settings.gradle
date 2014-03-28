@@ -1,0 +1,32 @@
+include 'jfw-util-core'
+include 'jfw-resource-core'
+include 'jfw-exception-core'
+include 'jfw-web-util-core'
+include 'jfw-test'
+include 'jfw-web-core'
+include 'jfw-mybatis-core'
+include 'jfw-rest-core'
+include 'jfw-rest-plugin-jersey'
+include 'jfw-rest-plugin-springmvc'
+include 'jfw-validation-core'
+include 'jfw-amqp-core'
+include 'jfw-csv-core'
+include 'jfw-excel-core'
+
+include 'jfw-data-mongodb-test'
+
+project(':jfw-util-core').projectDir = new File(settingsDir, './util/jfw-util-core')
+project(':jfw-resource-core').projectDir = new File(settingsDir, './util/jfw-resource-core')
+project(':jfw-exception-core').projectDir = new File(settingsDir, './util/jfw-exception-core')
+project(':jfw-web-core').projectDir = new File(settingsDir, './web/jfw-web-core')
+project(':jfw-web-util-core').projectDir = new File(settingsDir, './util/jfw-web-util-core')
+project(':jfw-validation-core').projectDir = new File(settingsDir, './validation/jfw-validation-core')
+project(':jfw-rest-core').projectDir = new File(settingsDir, './restful-web-service/jfw-rest-core')
+project(':jfw-rest-plugin-jersey').projectDir = new File(settingsDir, './restful-web-service/jfw-rest-plugin-jersey')
+project(':jfw-rest-plugin-springmvc').projectDir = new File(settingsDir, './restful-web-service/jfw-rest-plugin-springmvc')
+project(':jfw-mybatis-core').projectDir = new File(settingsDir, './jdbc/jfw-mybatis-core')
+project(':jfw-test').projectDir = new File(settingsDir, './test/jfw-test')
+project(':jfw-amqp-core').projectDir = new File(settingsDir, './async/jfw-amqp-core')
+project(':jfw-csv-core').projectDir = new File(settingsDir, './csv/jfw-csv-core')
+project(':jfw-excel-core').projectDir = new File(settingsDir, './excel/jfw-excel-core')
+project(':jfw-data-mongodb-test').projectDir = new File(settingsDir, './test/jfw-data-mongodb-test')

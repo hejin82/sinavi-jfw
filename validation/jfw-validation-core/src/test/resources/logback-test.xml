@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <target>System.out</target>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} %5p %m \(%F@%L\)%n</Pattern>
+    </encoder>
+  </appender>
+  
+  <logger name="jp.co.ctc_g.jse" level="debug">
+  </logger>
+
+  <root level="warn">
+    <appender-ref ref="console" />
+  </root>
+</configuration>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>XML Resource Properties</comment>
+<entry key="xml.properties.key">xmlに定義されたキーです。</entry>
+</properties>
