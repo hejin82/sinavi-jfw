@@ -1,7 +1,7 @@
 ---
 layout: index
 title: SINAVI J-Framework
-tagline: ease of development
+tagline: 
 ---
 {% include JB/setup %}
 
