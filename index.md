@@ -55,7 +55,7 @@ tagline:
   <div class="row">
     <div class="col-lg-4 col-sm-6">
       <h3>
-        <i class="fa fa-github">&nbsp;</i>Github
+        <i class="fa fa-github">&nbsp;</i>GitHub
       </h3>
       <p>ソースコードは<a href="{{ site.github_project_pages }}">GitHub</a>で管理しています。</p>
     </div>
