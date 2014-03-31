@@ -47,11 +47,11 @@
       {{ content }}
     </div>
     <hr>
-    <footer>
+    <footer class="global-footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-6"><img src="{{ BASE_PATH }}/images/logo.jpg"></img></div>
-          <div class="col-md-6"><p class="text-right">&copy; {{ site.time | date: '%Y' }} <a href="{{ site.author.site }}">{{ site.author.name }}</a></p></div>
+          <div class="col-md-6 footer-logo"><img src="{{ BASE_PATH }}/images/logo.jpg"></img></div>
+          <div class="col-md-6 copyright"><small>&copy; {{ site.time | date: '%Y' }} <a href="{{ site.author.site }}">{{ site.author.name }}</a></small></div>
         </div>
       </div>
     </footer>

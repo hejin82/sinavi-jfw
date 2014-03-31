@@ -8,6 +8,10 @@ h2 {
   color: #7f7f7f;
 }
 
+.navbar {
+  border-radius: 0;
+}
+
 .table thead tr th {
   color: #FFFFFF;
   background-color: #2980B9;
@@ -15,4 +19,30 @@ h2 {
 
 .carousel-inner a {
   color: #FFFFFF;
+}
+
+/**
+ * Global Footer Component
+ */
+.global-footer {
+  padding-bottom: 20px;
+}
+
+.global-footer .footer-logo {
+  margin-bottom: 15px;
+}
+
+.copyright {
+  line-height: 25px;
+  font-size: 14px;
+}
+
+@media (min-width: 992px) {
+  .global-footer .footer-logo {
+    margin-bottom: 0;
+  }
+
+  .copyright {
+    text-align: right;
+  }
 }
