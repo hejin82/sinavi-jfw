@@ -536,80 +536,11 @@ public final class Strings {
 
     /**
      * 正規表現に指定する文字列をエスケープした文字列に変換します。
-     * <ul>
-     * <li>"."→"\\."</li>
-     * <li>"?"→"\\?"</li>
-     * <li>"*"→"\\*"</li>
-     * <li>"+"→"\\+"</li>
-     * <li>"|"→"\\|"</li>
-     * <li>"["→"\\["</li>
-     * <li>"]"→"\\]"</li>
-     * <li>"("→"\\("</li>
-     * <li>")"→"\\)"</li>
-     * <li>"{"→"\\{"</li>
-     * <li>"}"→"\\}"</li>
-     * </ul>
+     * @see Pattern#quote(java.lang.String) 
      * @param text 正規表現のパターン
      * @return エスケープされた文字列
      */
     public static String escapeRegex(CharSequence text) {
-
-        StringBuilder buff = new StringBuilder();
-
-        for (int i = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            switch (c) {
-                case '.':
-                    buff.append("\\.");
-                    break;
-                case '?':
-                    buff.append("\\?");
-                    break;
-                case '*':
-                    buff.append("\\*");
-                    break;
-                case '+':
-                    buff.append("\\+");
-                    break;
-                case '\\':
-                    if (i + 1 < text.length()) {
-                        char next = text.charAt(i + 1);
-                        if (('A' <= next && next <= 'Z') || ('a' <= next && next <= 'z')) {
-                            buff.append("\\\\");
-                        } else {
-                            buff.append('\\');
-                        }
-                    } else {
-                        buff.append('\\');
-                    }
-                    break;
-                case '|':
-                    buff.append("\\|");
-                    break;
-                case '[':
-                    buff.append("\\[");
-                    break;
-                case ']':
-                    buff.append("\\]");
-                    break;
-                case '(':
-                    buff.append("\\(");
-                    break;
-                case ')':
-                    buff.append("\\)");
-                    break;
-                case '{':
-                    buff.append("\\{");
-                    break;
-                case '}':
-                    buff.append("\\}");
-                    break;
-                default:
-                    buff.append(c);
-                    break;
-            }
-        }
-
-        return buff.toString();
+        return Pattern.quote(text.toString());
     }
 }
