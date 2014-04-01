@@ -8,3 +8,5 @@ services:
   - rabbitmq
 before_install:
   - chmod +x gradlew
+install: 
+  - gradlew packages	
