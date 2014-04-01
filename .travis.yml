@@ -9,4 +9,6 @@ services:
 before_install:
   - chmod +x gradlew
 install: 
-  - ./gradlew packages
+  - ./gradlew assemble
+script:
+  - ./gradlew codeChecks
