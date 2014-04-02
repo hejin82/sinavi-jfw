@@ -307,16 +307,16 @@ public class StringsTest {
     
     @Test
     public void escapeRegex() {
-        assertEquals("\\.", Strings.escapeRegex("."));
-        assertEquals("\\?", Strings.escapeRegex("?"));
-        assertEquals("\\*", Strings.escapeRegex("*"));
-        assertEquals("\\+", Strings.escapeRegex("+"));
-        assertEquals("\\\\d", Strings.escapeRegex("\\d"));
-        assertEquals("\\$", Strings.escapeRegex("\\$"));
-        assertEquals("\\|", Strings.escapeRegex("|"));
-        assertEquals("\\[\\]", Strings.escapeRegex("[]"));
-        assertEquals("\\(\\)", Strings.escapeRegex("()"));
-        assertEquals("\\{\\}", Strings.escapeRegex("{}"));
+        assertEquals("\\Q.\\E", Strings.escapeRegex("."));
+        assertEquals("\\Q?\\E", Strings.escapeRegex("?"));
+        assertEquals("\\Q*\\E", Strings.escapeRegex("*"));
+        assertEquals("\\Q+\\E", Strings.escapeRegex("+"));
+        assertEquals("\\Q\\d\\E", Strings.escapeRegex("\\d"));
+        assertEquals("\\Q\\$\\E", Strings.escapeRegex("\\$"));
+        assertEquals("\\Q|\\E", Strings.escapeRegex("|"));
+        assertEquals("\\Q[]\\E", Strings.escapeRegex("[]"));
+        assertEquals("\\Q()\\E", Strings.escapeRegex("()"));
+        assertEquals("\\Q{}\\E", Strings.escapeRegex("{}"));
     }
     
     @Test
