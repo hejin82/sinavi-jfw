@@ -1,11 +1,8 @@
 language: java
-addons:
-  hosts:
-    - sinavi-jfw
 jdk:
   - oraclejdk7
 env:
-  - TERM=dumb DB=h2 JDBC_URL= JDBC_USER= JDBC_PASSWORD= RABBITMQ_NODE_PORT=5672 RABBITMQ_NODENAME=sinavi-jfw RABBITMQ_HOST=sinavi-jfw
+  - TERM=dumb DB=h2 JDBC_URL= JDBC_USER= JDBC_PASSWORD=
 services: 
   - mongodb
   - rabbitmq
