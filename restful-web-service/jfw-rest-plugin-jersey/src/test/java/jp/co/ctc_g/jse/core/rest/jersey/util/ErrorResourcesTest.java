@@ -21,9 +21,15 @@ import static org.junit.Assert.assertThat;
 import java.util.Locale;
 
 import org.hamcrest.CoreMatchers;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ErrorResourcesTest {
+
+    @BeforeClass
+    public static void setup() {
+        Locale.setDefault(new Locale("ja","JP"));
+    }
 
     @Test
     public void キーが見つからない場合はキーがメッセージになる() {

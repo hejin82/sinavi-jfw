@@ -20,10 +20,10 @@ import jp.co.ctc_g.jse.core.amqp.config.AmqpContextConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.MutablePropertySources;
+import org.springframework.mock.env.MockPropertySource;
 
-@PropertySource("classpath:/jp/co/ctc_g/jse/core/amqp/config/amqp/Default.properties")
 @Import(AmqpContextConfig.class)
 public class DefaultProperties {
 
@@ -34,6 +34,9 @@ public class DefaultProperties {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
         configurer.setIgnoreResourceNotFound(true);
         configurer.setIgnoreUnresolvablePlaceholders(true);
+        MutablePropertySources propertySources = new MutablePropertySources();
+        propertySources.addLast(new MockPropertySource());
+        configurer.setPropertySources(propertySources);
         return configurer;
     }
 

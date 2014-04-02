@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.validation.Constraint;
@@ -53,6 +54,7 @@ import jp.co.ctc_g.jse.test.bean.AnnotationTargetTypeBean;
 import org.hibernate.validator.internal.util.ReflectionHelper;
 import org.junit.Assume;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
@@ -64,6 +66,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Enclosed.class)
 public class AnnotationTargetTypeTest {
+    
+    @BeforeClass
+    public static void setup() {
+        Locale.setDefault(new Locale("ja", "JP"));
+    }
 
     protected static Validator VALIDATOR;
     protected static ExecutableValidator EXECUTABLE_VALIDATOR;

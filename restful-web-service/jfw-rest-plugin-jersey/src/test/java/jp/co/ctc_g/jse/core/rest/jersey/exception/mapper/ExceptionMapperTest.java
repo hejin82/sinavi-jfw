@@ -44,12 +44,18 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 import org.glassfish.jersey.test.JerseyTest;
 import org.hamcrest.CoreMatchers;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
 @RunWith(Enclosed.class)
 public class ExceptionMapperTest {
+    
+    @BeforeClass
+    public static void setup() {
+        Locale.setDefault(new Locale("ja","JP"));
+    }
 
     public static class BadRequestExceptionがハンドリングできる extends JerseyTest {
 
@@ -69,6 +75,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -97,6 +104,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -125,6 +133,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -154,6 +163,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -182,6 +192,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -210,6 +221,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -238,6 +250,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -266,6 +279,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -294,6 +308,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -308,6 +323,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -322,6 +338,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -336,6 +353,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -364,6 +382,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -393,6 +412,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -421,6 +441,7 @@ public class ExceptionMapperTest {
                 .request()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
+                .acceptLanguage(Locale.JAPANESE)
                 .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -448,6 +469,7 @@ public class ExceptionMapperTest {
                 .request()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
+                .acceptLanguage(Locale.JAPANESE)
                 .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -475,6 +497,7 @@ public class ExceptionMapperTest {
                 .request()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
+                .acceptLanguage(Locale.JAPANESE)
                 .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -503,6 +526,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -536,6 +560,7 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.JAPANESE)
                     .post(Entity.entity(hoge, MediaType.APPLICATION_JSON), Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());
@@ -577,8 +602,8 @@ public class ExceptionMapperTest {
                     .request()
                     .header(HttpHeaders.CONTENT_LANGUAGE, "en")
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
-                    .acceptLanguage(Locale.ENGLISH)
                     .accept(MediaType.APPLICATION_JSON)
+                    .acceptLanguage(Locale.ENGLISH)
                     .get(Response.class);
             ErrorMessage entity = response.readEntity(ErrorMessage.class);
             assertThat(entity, CoreMatchers.notNullValue());

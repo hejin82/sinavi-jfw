@@ -505,6 +505,7 @@ project("jfw-csv-core") {
         compile 'net.sourceforge.collections:collections-generic:4.01'
         compile "org.mybatis:mybatis:${mybatisVersion}"
         testCompile project(':jfw-test')
+        testCompile "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
         testCompile "org.springframework:spring-jdbc:${springVersion}"
         testCompile "com.h2database:h2:${h2Version}"
     }
