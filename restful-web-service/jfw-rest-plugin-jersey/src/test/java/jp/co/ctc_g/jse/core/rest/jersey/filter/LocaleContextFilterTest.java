@@ -79,7 +79,7 @@ public class LocaleContextFilterTest extends JerseyTest {
         Response response = target("test").request().get();
         assertThat(response.getStatus(), is(200));
         assertThat(locale, notNullValue());
-        assertThat(locale.getLanguage(), is("ja"));
+        assertThat(locale.getLanguage(), is(Locale.getDefault().getLanguage()));
     }
 
 }

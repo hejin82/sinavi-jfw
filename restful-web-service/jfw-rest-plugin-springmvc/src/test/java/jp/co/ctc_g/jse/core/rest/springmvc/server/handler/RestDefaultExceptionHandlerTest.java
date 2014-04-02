@@ -20,10 +20,12 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 import jp.co.ctc_g.jse.core.rest.entity.ErrorMessage;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.ConversionNotSupportedException;
@@ -51,6 +53,11 @@ import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMeth
 public class RestDefaultExceptionHandlerTest {
 
     private RestDefaultExceptionHandler exceptionHandlerSupport;
+
+    @BeforeClass
+    public static void setupDefaultLocale() {
+        Locale.setDefault(new Locale("ja", "JP"));
+    }
 
     @Before
     public void setup() {

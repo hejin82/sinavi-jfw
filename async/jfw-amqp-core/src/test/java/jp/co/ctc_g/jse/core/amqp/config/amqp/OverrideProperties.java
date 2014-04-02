@@ -20,21 +20,29 @@ import jp.co.ctc_g.jse.core.amqp.config.AmqpContextConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.MutablePropertySources;
+import org.springframework.mock.env.MockPropertySource;
 
-@PropertySource("classpath:/jp/co/ctc_g/jse/core/amqp/config/amqp/Override.properties")
 @Import(AmqpContextConfig.class)
 public class OverrideProperties {
-    
-    public OverrideProperties() {}
+
+    public OverrideProperties() {
+    }
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
         configurer.setIgnoreResourceNotFound(true);
         configurer.setIgnoreUnresolvablePlaceholders(true);
+        MutablePropertySources propertySources = new MutablePropertySources();
+        MockPropertySource source = new MockPropertySource()
+            .withProperty("rabbitmq.host", "192.168.10.10")
+            .withProperty("rabbitmq.username", "jfw")
+            .withProperty("rabbitmq.password", "jfw")
+            .withProperty("rabbitmq.channel-cache-size", 100);
+        propertySources.addLast(source);
+        configurer.setPropertySources(propertySources);
         return configurer;
     }
-
 }
