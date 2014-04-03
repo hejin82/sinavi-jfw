@@ -178,7 +178,7 @@ configure(rootProject) {
 
 configure(subprojects) {subproject ->
     apply plugin : 'github-pages'
-    group = 'jp.co.ctc_g.jfw'
+    group = 'jp.co.ctc-g.jfw'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     jar {
         doFirst {
@@ -218,24 +218,32 @@ configure(subprojects) {subproject ->
         dependsOn signArchives
         repositories.mavenDeployer {
             configuration = configurations.deployerJars
-//            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
-//                authentication(userName: sonatypeUsername, password: sonatypePassword)
-//            }
-//            snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots/') {
-//                authentication(userName: sonatypeUsername, password: sonatypePassword)
-//            }
-//            scm { url 'https://github.com/ctc-g/sinavi-jfw' }
+            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+            snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots/') {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
             pom.project {
-                group 'jp.co.ctc_g.jfw'
+                group 'jp.co.ctc-g.jfw'
                 packaging 'jar'
                 inceptionYear '2014'
                 url 'https://github.com/ctc-g/sinavi-jfw'
+                organization {
+                    name 'ctc-g'
+                    url 'https://github.com/ctc-g'
+                }
                 licenses {
                     license {
                         name 'The Apache Software License, Version 2.0'
                         url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                         distribution 'repo'
                     }
+                }
+                scm {
+                    connection 'scm:git:git://github.com/ctc-g/sinavi-jfw'
+                    developerConnection 'scm:git:git://github.com/ctc-g/sinavi-jfw'
+                    url 'https://github.com/ctc-g/sinavi-jfw'
                 }
             }
         }
@@ -276,7 +284,6 @@ configure(subprojects) {subproject ->
 
 project("jfw-util-core") {
     description = 'SINAVI J-Framework Utility'
-    version ='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile "commons-collections:commons-collections:${commonsCollectionsVersion}"
@@ -286,7 +293,6 @@ project("jfw-util-core") {
 
 project("jfw-resource-core") {
     description = 'SINAVI J-Framework Resource'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-util-core')
@@ -299,7 +305,6 @@ project("jfw-resource-core") {
 
 project("jfw-exception-core") {
     description = 'SINAVI J-Framework Exception'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-util-core')
@@ -312,7 +317,6 @@ project("jfw-exception-core") {
 
 project("jfw-web-util-core") {
     description = 'SINAVI J-Framework Web Utility'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-util-core')
@@ -326,7 +330,6 @@ project("jfw-web-util-core") {
 
 project("jfw-test") {
     description = 'SINAVI J-Framework Test Utility'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-util-core')
@@ -343,7 +346,6 @@ project("jfw-test") {
 
 project("jfw-data-mongodb-test") {
     description = 'SINAVI J-Framework Test Utility'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     defaultTasks 'clean', 'packages'
     dependencies {
@@ -362,7 +364,6 @@ project("jfw-data-mongodb-test") {
 
 project("jfw-web-core") {
     description = 'SINAVI J-Framework Web'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-exception-core')
@@ -390,7 +391,6 @@ project("jfw-web-core") {
 
 project("jfw-mybatis-core") {
     description = 'SINAVI J-Framework MyBatis'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-web-util-core')
@@ -409,7 +409,6 @@ project("jfw-mybatis-core") {
 
 project("jfw-rest-core") {
     description = 'SINAVI J-Framework REST Client for JAX-RS'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile "javax.ws.rs:javax.ws.rs-api:${jaxRsVersion}"
@@ -420,7 +419,6 @@ project("jfw-rest-core") {
 
 project("jfw-rest-plugin-jersey") {
     description = 'SINAVI J-Framework REST Client for JAX-RS (Jersey)'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-util-core')
@@ -442,7 +440,6 @@ project("jfw-rest-plugin-jersey") {
 
 project("jfw-rest-plugin-springmvc") {
     description = 'SINAVI J-Framework REST Plugin for SpringMVC'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-rest-core')
@@ -464,7 +461,6 @@ project("jfw-rest-plugin-springmvc") {
 
 project("jfw-validation-core") {
     description = 'SINAVI J-Framework Bean Validation'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile (project(':jfw-util-core'))
@@ -478,7 +474,6 @@ project("jfw-validation-core") {
 
 project("jfw-amqp-core") {
     description = 'SINAVI J-Framework AMQP'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-util-core')
@@ -495,7 +490,6 @@ project("jfw-amqp-core") {
 
 project("jfw-csv-core") {
     description = 'SINAVI J-Framework CSV'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies {
         compile project(':jfw-util-core')
@@ -513,7 +507,6 @@ project("jfw-csv-core") {
 
 project("jfw-excel-core") {
     description = 'SINAVI J-Framework Excel'
-    version='1.0.0.0'
     defaultTasks 'clean', 'packages', 'uploadArchives'
     dependencies { 
         compile 'jp.sf.amateras.xlsbeans:xlsbeans:1.2.1'
