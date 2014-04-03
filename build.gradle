@@ -179,7 +179,7 @@ configure(rootProject) {
 configure(subprojects) {subproject ->
     apply plugin : 'github-pages'
     group = 'jp.co.ctc-g.jfw'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     jar {
         doFirst {
             manifest.attributes["Created-By"] =  "${System.getProperty("java.version")}"
@@ -230,8 +230,8 @@ configure(subprojects) {subproject ->
                 inceptionYear '2014'
                 url 'https://github.com/ctc-g/sinavi-jfw'
                 organization {
-                    name 'ctc-g'
-                    url 'https://github.com/ctc-g'
+                    name 'ITOCHU Techno-Solutions Corporation.'
+                    url 'http://www.ctc-g.co.jp'
                 }
                 licenses {
                     license {
@@ -284,7 +284,7 @@ configure(subprojects) {subproject ->
 
 project("jfw-util-core") {
     description = 'SINAVI J-Framework Utility'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile "commons-collections:commons-collections:${commonsCollectionsVersion}"
         compile "org.springframework:spring-beans:${springVersion}"
@@ -293,7 +293,7 @@ project("jfw-util-core") {
 
 project("jfw-resource-core") {
     description = 'SINAVI J-Framework Resource'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-util-core')
         compile "commons-collections:commons-collections:${commonsCollectionsVersion}"
@@ -305,7 +305,7 @@ project("jfw-resource-core") {
 
 project("jfw-exception-core") {
     description = 'SINAVI J-Framework Exception'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-util-core')
         compile project(':jfw-resource-core')
@@ -317,7 +317,7 @@ project("jfw-exception-core") {
 
 project("jfw-web-util-core") {
     description = 'SINAVI J-Framework Web Utility'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-util-core')
         compile project(':jfw-exception-core')
@@ -330,7 +330,7 @@ project("jfw-web-util-core") {
 
 project("jfw-test") {
     description = 'SINAVI J-Framework Test Utility'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-util-core')
         compile "commons-io:commons-io:${commonsIoVersion}"
@@ -346,7 +346,6 @@ project("jfw-test") {
 
 project("jfw-data-mongodb-test") {
     description = 'SINAVI J-Framework Test Utility'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
     defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-test')
@@ -364,7 +363,7 @@ project("jfw-data-mongodb-test") {
 
 project("jfw-web-core") {
     description = 'SINAVI J-Framework Web'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-exception-core')
         compile project(':jfw-web-util-core')
@@ -391,7 +390,7 @@ project("jfw-web-core") {
 
 project("jfw-mybatis-core") {
     description = 'SINAVI J-Framework MyBatis'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-web-util-core')
         compile "org.mybatis:mybatis:${mybatisVersion}"
@@ -409,7 +408,7 @@ project("jfw-mybatis-core") {
 
 project("jfw-rest-core") {
     description = 'SINAVI J-Framework REST Client for JAX-RS'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile "javax.ws.rs:javax.ws.rs-api:${jaxRsVersion}"
         compile "org.codehaus.jackson:jackson-core-asl:${jacksonVersion}",
@@ -419,7 +418,7 @@ project("jfw-rest-core") {
 
 project("jfw-rest-plugin-jersey") {
     description = 'SINAVI J-Framework REST Client for JAX-RS (Jersey)'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-util-core')
         compile project(':jfw-exception-core')
@@ -440,7 +439,7 @@ project("jfw-rest-plugin-jersey") {
 
 project("jfw-rest-plugin-springmvc") {
     description = 'SINAVI J-Framework REST Plugin for SpringMVC'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-rest-core')
         compile project(':jfw-exception-core')
@@ -461,7 +460,7 @@ project("jfw-rest-plugin-springmvc") {
 
 project("jfw-validation-core") {
     description = 'SINAVI J-Framework Bean Validation'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile (project(':jfw-util-core'))
         compile "javax.validation:validation-api:${beanValidationVersion}"
@@ -474,7 +473,7 @@ project("jfw-validation-core") {
 
 project("jfw-amqp-core") {
     description = 'SINAVI J-Framework AMQP'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-util-core')
         compile project(':jfw-exception-core')
@@ -490,7 +489,7 @@ project("jfw-amqp-core") {
 
 project("jfw-csv-core") {
     description = 'SINAVI J-Framework CSV'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-util-core')
         compile project(':jfw-exception-core')
@@ -507,7 +506,7 @@ project("jfw-csv-core") {
 
 project("jfw-excel-core") {
     description = 'SINAVI J-Framework Excel'
-    defaultTasks 'clean', 'packages', 'uploadArchives'
+    defaultTasks 'clean', 'packages'
     dependencies { 
         compile 'jp.sf.amateras.xlsbeans:xlsbeans:1.2.1'
     }
