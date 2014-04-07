@@ -217,6 +217,7 @@ configure(subprojects) {subproject ->
     uploadArchives {
         dependsOn signArchives
         repositories.mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
             configuration = configurations.deployerJars
             repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
                 authentication(userName: sonatypeUsername, password: sonatypePassword)
@@ -244,6 +245,13 @@ configure(subprojects) {subproject ->
                     connection 'scm:git:git://github.com/ctc-g/sinavi-jfw'
                     developerConnection 'scm:git:git://github.com/ctc-g/sinavi-jfw'
                     url 'https://github.com/ctc-g/sinavi-jfw'
+                }
+                developers {
+                    developer {
+                        id 'sinavi-jfw'
+                        name 'SINAVI J-Framework'
+                        email 'sinavi-jframework@ctc-g.co.jp'
+                    }
                 }
             }
         }
@@ -289,6 +297,14 @@ project("jfw-util-core") {
         compile "commons-collections:commons-collections:${commonsCollectionsVersion}"
         compile "org.springframework:spring-beans:${springVersion}"
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-resource-core") {
@@ -300,6 +316,14 @@ project("jfw-resource-core") {
         compile "org.springframework:spring-core:${springVersion}",
                 "org.springframework:spring-context:${springVersion}"
         testCompile "org.springframework:spring-test:${springVersion}"
+    }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
     }
 }
 
@@ -313,6 +337,14 @@ project("jfw-exception-core") {
         compile "org.springframework:spring-core:${springVersion}"
         testCompile "org.springframework:spring-test:${springVersion}"
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-web-util-core") {
@@ -325,6 +357,14 @@ project("jfw-web-util-core") {
         compile "org.springframework:spring-core:${springVersion}",
                 "org.springframework:spring-context:${springVersion}"
         testCompile "org.springframework:spring-test:${springVersion}"
+    }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
     }
 }
 
@@ -342,10 +382,18 @@ project("jfw-test") {
                 "org.springframework:spring-beans:${springVersion}",
                 "org.springframework:spring-test:${springVersion}"
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-data-mongodb-test") {
-    description = 'SINAVI J-Framework Test Utility'
+    description = 'SINAVI J-Framework MongoDB Test Utility'
     defaultTasks 'clean', 'packages'
     dependencies {
         compile project(':jfw-test')
@@ -358,6 +406,14 @@ project("jfw-data-mongodb-test") {
                 "org.codehaus.jackson:jackson-mapper-asl:${jacksonVersion}",
                 "org.codehaus.jackson:jackson-xc:${jacksonVersion}",
                 "org.codehaus.jackson:jackson-jaxrs:${jacksonVersion}"
+    }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
     }
 }
 
@@ -386,6 +442,14 @@ project("jfw-web-core") {
         provided "javax.servlet.jsp:jsp-api:${jspApiVersion}"
         provided "javax.servlet:jstl:${jstlVersion}"
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-mybatis-core") {
@@ -404,6 +468,14 @@ project("jfw-mybatis-core") {
         testCompile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
         testCompile "com.h2database:h2:${h2Version}"
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-rest-core") {
@@ -413,6 +485,14 @@ project("jfw-rest-core") {
         compile "javax.ws.rs:javax.ws.rs-api:${jaxRsVersion}"
         compile "org.codehaus.jackson:jackson-core-asl:${jacksonVersion}",
                 "org.codehaus.jackson:jackson-mapper-asl:${jacksonVersion}"
+    }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
     }
 }
 
@@ -435,6 +515,14 @@ project("jfw-rest-plugin-jersey") {
                 "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-default-client:${jerseyVersion}"
         testCompile project(':jfw-validation-core')
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-rest-plugin-springmvc") {
@@ -456,6 +544,14 @@ project("jfw-rest-plugin-springmvc") {
             exclude group: "org.eclipse.jetty.orbit", module: "javax.servlet"
         }
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-validation-core") {
@@ -468,6 +564,14 @@ project("jfw-validation-core") {
         compile "javax.el:javax.el-api:${elVersion}"
         compile "org.glassfish.web:javax.el:${elVersion}"
         compile "commons-validator:commons-validator:${commonsValidatorVersion}"
+    }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
     }
 }
 
@@ -484,6 +588,14 @@ project("jfw-amqp-core") {
         testCompile "org.springframework:spring-tx:${springVersion}"
         runtime "org.codehaus.jackson:jackson-core-asl:${jacksonVersion}",
                 "org.codehaus.jackson:jackson-mapper-asl:${jacksonVersion}"
+    }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
     }
 }
 
@@ -502,6 +614,14 @@ project("jfw-csv-core") {
         testCompile "org.springframework:spring-jdbc:${springVersion}"
         testCompile "com.h2database:h2:${h2Version}"
     }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
+    }
 }
 
 project("jfw-excel-core") {
@@ -509,5 +629,13 @@ project("jfw-excel-core") {
     defaultTasks 'clean', 'packages'
     dependencies { 
         compile 'jp.sf.amateras.xlsbeans:xlsbeans:1.2.1'
+    }
+    uploadArchives {
+        repositories.mavenDeployer {
+            pom.project {
+                name project.description
+                description project.description
+            }
+        }
     }
 }
