@@ -63,13 +63,13 @@ tagline:
       <h3>
         <i class="fa fa-building-o">&nbsp;</i>Bamboo
       </h3>
-      <p>ビルド、単体テスト実行には<a href="{{ site.bamboo_pages }}">Bamboo</a>を利用しています。※現在、利用申請中です。</p>
+      <p>ビルド、単体テスト実行には<a href="{{ site.travis_pages }}">Travis CI</a>を利用しています。</p>
     </div>
     <div class="col-lg-4 col-sm-6">
       <h3>
         <i class="fa fa-bug">&nbsp;</i>JIRA
       </h3>
-      <p>課題管理には<a href="{{ site.jira_pages }}">JIRA</a>を利用しています。※現在、利用申請中です。</p>
+      <p>課題管理には<a href="{{ site.jira_pages }}">JIRA</a>を利用しています。</p>
     </div>
   </div>
   <div class="row">
@@ -77,7 +77,7 @@ tagline:
       <h3>
         <i class="fa fa-comment-o">&nbsp;</i>Community
       </h3>
-      <p>Communityには<a href="{{ site.confluence_pages }}">Confluence</a>を利用しています。※現在、利用申請中です。</p>
+      <p>Communityには<a href="{{ site.confluence_pages }}">Confluence</a>を利用しています。</p>
     </div>
     <div class="col-lg-4 col-sm-6">
       <h3>

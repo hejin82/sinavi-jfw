@@ -22,7 +22,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmCsv">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/util/jfw-util-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJU"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -37,7 +37,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmCsv">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/util/jfw-resource-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJR"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -52,7 +52,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmCsv">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/util/jfw-exception-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJE"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -69,7 +69,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmCsv">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/util/jfw-web-util-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJWU"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -84,7 +84,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmWeb">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/web/jfw-web-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJW"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -99,7 +99,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmValidation">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/validation/jfw-validation-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-validation-core"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJBV"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -116,7 +116,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmRest">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/restful-web-service/jfw-rest-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJRCFJ"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -131,7 +131,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmRestJersey">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/restful-web-service/jfw-rest-plugin-jersey"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJRCFJJ"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -146,7 +146,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmRestSpringMvc">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/restful-web-service/jfw-rest-plugin-springmvc"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-rest-plugin-springmvc"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJRPFS"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -163,7 +163,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmMybatis">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/jdbc/jfw-mybatis-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJM"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -178,7 +178,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmExcel">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/excel/jfw-excel-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJX"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -193,7 +193,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmCsv">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/csv/jfw-csv-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-csv-core"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJC"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -210,7 +210,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmAmqp">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/async/jfw-amqp-core"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-amqp-core"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJA"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -225,7 +225,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmTest">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/test/jfw-test"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-test"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJTU"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>
@@ -240,7 +240,7 @@ group: navigation
       <ul class="dropdown-menu" role="menu" aria-labelledby="ddmTest">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.github_project_pages }}/test/jfw-data-mongodb-test"><i class="fa fa-github">&nbsp;</i>GitHub</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.bamboo_pages }}/jfw-data-mongodb-test"><i class="fa fa-building-o">&nbsp;</i>Bamboo</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site.jira_pages }}/browse/SJMTU"><i class="fa fa-bug-o">&nbsp;</i>JIRA</a></li>
       </ul>
     </div>
   </div>

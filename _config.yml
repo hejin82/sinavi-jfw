@@ -62,9 +62,9 @@ jfw-data-mongo-test:
 
 baseurl : http://ctc-g.github.io/sinavi-jfw/
 github_project_pages : http://github.com/ctc-g/sinavi-jfw/tree/master
-bamboo_pages : 
-jira_pages : 
-confluence_pages : 
+travis_pages : https://travis-ci.org/ctc-g/sinavi-jfw
+jira_pages : https://sinavi-jfw.atlassian.net
+confluence_pages : https://sinavi-jfw.atlassian.net/wiki
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
