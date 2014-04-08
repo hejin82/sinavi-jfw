@@ -61,7 +61,7 @@ tagline:
     </div>
     <div class="col-lg-4 col-sm-6">
       <h3>
-        <i class="fa fa-building-o">&nbsp;</i>Bamboo
+        <i class="fa fa-building-o">&nbsp;</i>Travis CI
       </h3>
       <p>ビルド、単体テスト実行には<a href="{{ site.travis_pages }}">Travis CI</a>を利用しています。</p>
     </div>
