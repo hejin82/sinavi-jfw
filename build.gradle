@@ -5,6 +5,7 @@ buildscript {
     dependencies {
         classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.7.0'
         classpath 'org.ajoberstar:gradle-git:0.6.4'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.4.0'
     }
 }
 
@@ -150,7 +151,7 @@ allprojects {
 
     jacocoTestReport {
         reports {
-            xml.enabled false
+            xml.enabled true
             csv.enabled false
             html.destination "${buildDir}/jacocoHtml"
         }
