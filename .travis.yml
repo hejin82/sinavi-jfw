@@ -11,3 +11,5 @@ before_install:
 install:
   - sudo rabbitmq-plugins enable rabbitmq_management
   - sudo service rabbitmq-server restart
+after_success:
+  - ./gradlew jacocoTestReport coveralls
