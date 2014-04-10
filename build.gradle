@@ -15,6 +15,7 @@ allprojects {
     apply plugin : 'checkstyle'
     apply plugin : 'findbugs'
     apply plugin : 'jacoco'
+    apply plugin : 'coveralls'
     apply plugin : 'idea'
     apply plugin : 'license'
     apply plugin : 'signing'
