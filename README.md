@@ -2,6 +2,7 @@ SINAVI J-Framework
 ==========
 
 [![Build Status](https://travis-ci.org/ctc-g/sinavi-jfw.svg?branch=master)](https://travis-ci.org/ctc-g/sinavi-jfw)
+[![Coverage Status](https://coveralls.io/repos/ctc-g/sinavi-jfw/badge.png?branch=coveralls)](https://coveralls.io/r/ctc-g/sinavi-jfw?branch=coveralls)
 [![cloudbees](http://web-static-cloudfront.s3.amazonaws.com/images/badges/BuiltOnDEV.png)](https://sinavi-jfw.ci.cloudbees.com)
 
 SINAVI J-Frameworkは、Java EE に対応したWebアプリケーションフレームワークで、高い汎用性が要求されるスクラッチ開発向けのCTC標準のフレームワークです。  
