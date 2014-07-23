@@ -25,9 +25,9 @@ import org.springframework.core.env.MutablePropertySources;
 import org.springframework.mock.env.MockPropertySource;
 
 @Import(AmqpContextConfig.class)
-public class OverrideProperties {
+public class InvalidProperties {
 
-    public OverrideProperties() {
+    public InvalidProperties() {
     }
 
     @Bean
@@ -37,11 +37,7 @@ public class OverrideProperties {
         configurer.setIgnoreUnresolvablePlaceholders(true);
         MutablePropertySources propertySources = new MutablePropertySources();
         MockPropertySource source = new MockPropertySource()
-            .withProperty("rabbitmq.host", "192.168.10.10")
-            .withProperty("rabbitmq.port", "5673")
-            .withProperty("rabbitmq.username", "jfw")
-            .withProperty("rabbitmq.password", "jfw")
-            .withProperty("rabbitmq.channel-cache-size", 100);
+            .withProperty("rabbitmq.port", "invalid");
         propertySources.addLast(source);
         configurer.setPropertySources(propertySources);
         return configurer;
