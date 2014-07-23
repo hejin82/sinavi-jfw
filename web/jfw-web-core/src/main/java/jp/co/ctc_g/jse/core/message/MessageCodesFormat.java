@@ -54,6 +54,7 @@ import org.springframework.validation.MessageCodeFormatter;
  * </p>
  * @author ITOCHU Techno-Solutions Corporation.
  */
+@Deprecated
 public class MessageCodesFormat implements MessageCodeFormatter {
 
     /**
