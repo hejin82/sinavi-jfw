@@ -19,6 +19,8 @@ package jp.co.ctc_g.jse.core.framework;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.co.ctc_g.jfw.core.exception.ApplicationUnrecoverableException;
+import jp.co.ctc_g.jfw.core.internal.InternalException;
 import jp.co.ctc_g.jfw.core.util.Arrays;
 
 import org.springframework.util.ClassUtils;
@@ -37,7 +39,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  * </p>
  * @see HandlerInterceptorAdapter
  * @author ITOCHU Techno-Solutions Corporation.
- * @see HandlerInterceptorAdapter
  */
 public class JseHandlerInterceptor extends HandlerInterceptorAdapter {
 
@@ -75,8 +76,12 @@ public class JseHandlerInterceptor extends HandlerInterceptorAdapter {
 
         PostBack postBack = PostBackManager.getCurrentPostBack();
         if (postBack != null && postBack.isPostBackRequest()) {
-            if (postBack.getException() instanceof BindException)
+            if (postBack.getException() instanceof BindException) {
+                if (modelAndView == null) {
+                    throw new InternalException(JseHandlerInterceptor.class, "E-POSTBACK#0002");
+                }
                 modelAndView.addObject(BindingResult.MODEL_KEY_PREFIX + postBack.getModelName(), postBack.getBindingResult());
+            }
         }
         
         super.postHandle(request, response, handler, modelAndView);
