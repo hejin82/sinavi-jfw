@@ -101,6 +101,7 @@ import org.springframework.validation.DefaultMessageCodesResolver;
  * @see LocalValidatorFactoryBean
  * @author ITOCHU Techno-Solutions Corporation.
  */
+@Deprecated
 public class MessageCodesResolver extends DefaultMessageCodesResolver {
 
     private static final long serialVersionUID = 1L;

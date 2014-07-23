@@ -20,7 +20,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +31,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import jp.co.ctc_g.jfw.core.internal.Config;
 import jp.co.ctc_g.jfw.core.internal.InternalException;
+import jp.co.ctc_g.jfw.core.internal.InternalMessages;
+import jp.co.ctc_g.jfw.core.resource.MessageSourceLocator;
 import jp.co.ctc_g.jfw.core.resource.Rs;
 import jp.co.ctc_g.jfw.core.util.Arrays;
 import jp.co.ctc_g.jfw.core.util.Beans;
@@ -37,8 +41,14 @@ import jp.co.ctc_g.jfw.core.util.Strings;
 import jp.co.ctc_g.jse.core.internal.WebCoreInternals;
 import jp.co.ctc_g.jse.core.message.MessageContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -50,6 +60,8 @@ import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
 /**
@@ -59,6 +71,9 @@ import com.google.common.collect.Lists;
  * @author ITOCHU Techno-Solutions Corporation.
  */
 public final class PostBackManager {
+    
+    private static final Logger L = LoggerFactory.getLogger(PostBackManager.class);
+    private static final ResourceBundle R = InternalMessages.getBundle(PostBackManager.class);
 
     private static final String BINDING_RESULT_KEY = PostBackManager.class.getName() + ".bindingResult";
 
@@ -96,12 +111,16 @@ public final class PostBackManager {
     
     private static final String DELIMITER_REGEX = "\\.";
     
+    private static final Pattern PLACE_HOLDER = Pattern.compile("\\{.*\\}");
+    
     private static final String MESSAGE_TEMPLATE;
     private static final String INDEXED_MESSAGE_TEMPLATE;
+    private static final String INDEXED_NOT_LABEL_MESSAGE_TEMPLATE;
     static {
         Config config = WebCoreInternals.getConfig(PostBackManager.class);
         MESSAGE_TEMPLATE = config.find("message_template");
         INDEXED_MESSAGE_TEMPLATE = config.find("indexed_message_template");
+        INDEXED_NOT_LABEL_MESSAGE_TEMPLATE = config.find("indexed_not_label_message_template");
     }
 
     /**
@@ -522,13 +541,34 @@ public final class PostBackManager {
     private static String detectValidationMessage(PostBack.Action action, FieldError fieldError) {
         String msg = fieldError.getDefaultMessage();
         if (action.template()) {
-            String label = Rs.find(fieldError);
+            String label = Rs.find((DefaultMessageSourceResolvable)fieldError.getArguments()[0]);
             if (!msg.equals(label)) {
                 msg = Strings.substitute(MESSAGE_TEMPLATE, Maps.hash("label", label).map("msg", fieldError.getDefaultMessage()));
                 int index = getIndex(fieldError.getField());
                 if (index != -1) {
                     msg = Strings.substitute(INDEXED_MESSAGE_TEMPLATE, Maps.hash("label", label).map("msg", fieldError.getDefaultMessage()).map("index", Integer.toString(index)));
                 }
+                if (L.isDebugEnabled()) L.debug(R.getString("D-POSTBACK#0003"), new Object[] {action.template(), msg});
+            }
+        } else {
+            if (PLACE_HOLDER.matcher(msg).find()) {
+                if (L.isDebugEnabled()) L.debug(R.getString("D-POSTBACK#0001"), new Object[] {fieldError});
+                MessageSource source = MessageSourceLocator.get();
+                Locale userLocale = LocaleContextHolder.getLocale();
+                Locale l = userLocale != null ? userLocale : Locale.getDefault();
+                DefaultMessageSourceResolvable[] arguments = Collections2.filter(Lists.newArrayList(fieldError.getArguments()), new Predicate<Object>() {
+                    @Override
+                    public boolean apply(Object input) {
+                        return input instanceof DefaultMessageSourceResolvable;
+                    }
+                }).toArray(new DefaultMessageSourceResolvable[1]);
+                msg = source.getMessage(msg, new Object[] {Rs.find(arguments[0])}, msg, l);
+                if (L.isDebugEnabled()) L.debug(R.getString("D-POSTBACK#0002"), new Object[] {msg});
+                int index = getIndex(fieldError.getField());
+                if (index != -1) {
+                    msg = Strings.substitute(INDEXED_NOT_LABEL_MESSAGE_TEMPLATE, Maps.hash("index", Integer.toString(index)).map("msg", msg));
+                }
+                if (L.isDebugEnabled()) L.debug(R.getString("D-POSTBACK#0003"), new Object[] {action.template(), msg});
             }
         }
         return msg;
