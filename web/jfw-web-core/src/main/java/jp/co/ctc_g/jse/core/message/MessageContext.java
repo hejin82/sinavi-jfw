@@ -586,4 +586,13 @@ public class MessageContext {
         if (context == null) context = new MessageContext(request);
         return context;
     }
+
+    /**
+     * MessageContexｔに設定されたリクエストを返します。
+     * @return リクエスト
+     */
+    public HttpServletRequest getRequest() {
+        return request;
+    }
+    
 }
