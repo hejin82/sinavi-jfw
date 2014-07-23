@@ -17,12 +17,17 @@
 package jp.co.ctc_g.jse.core.amqp.config;
 
 import java.util.Collections;
+import java.util.ResourceBundle;
+
+import jp.co.ctc_g.jfw.core.internal.InternalMessages;
+import jp.co.ctc_g.jfw.core.util.Args;
 
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -113,6 +118,11 @@ import org.springframework.retry.support.RetryTemplate;
  *    <td>127.0.0.1</td>
  *   </tr>
  *   <tr>
+ *    <td>rabbitmq.port</td>
+ *    <td>RabbitMQの接続ポートを指定します。</td>
+ *    <td>5672</td>
+ *   </tr>
+ *   <tr>
  *    <td>rabbitmq.username</td>
  *    <td>接続するためのユーザ名を指定します。</td>
  *    <td>guest</td>
@@ -142,7 +152,9 @@ import org.springframework.retry.support.RetryTemplate;
  * @author ITOCHU Techno-Solutions Corporation.
  */
 @Configuration
-public class AmqpContextConfig {
+public class AmqpContextConfig implements InitializingBean {
+
+    private static final ResourceBundle R = InternalMessages.getBundle(AmqpContextConfig.class);
 
     /**
      * 接続するRabbitMQのホスト名
@@ -151,6 +163,14 @@ public class AmqpContextConfig {
      */
     @Value("${rabbitmq.host:127.0.0.1}")
     protected String host;
+    
+    /**
+     * 接続するRabbitMQのポート番号
+     * 
+     * デフォルト：5672
+     */
+    @Value("${rabbitmq.port:5672}")
+    protected String port;
 
     /**
      * RabbitMQに接続するためのユーザ名
@@ -203,7 +223,7 @@ public class AmqpContextConfig {
      */
     @Bean
     public ConnectionFactory factory() {
-        CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host);
+        CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host, Integer.valueOf(port));
         connectionFactory.setUsername(username);
         connectionFactory.setPassword(password);
         connectionFactory.setChannelCacheSize(channelCacheSize);
@@ -234,6 +254,20 @@ public class AmqpContextConfig {
         JsonMessageConverter converter = new JsonMessageConverter();
         converter.setCreateMessageIds(true);
         return converter;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        Args.checkNotNull(host, "ホスト名(rabbitmq.host)は必須です。");
+        Args.checkNotNull(port, "ポート番号(rabbitmq.port)は必須です。");
+        try {
+            Integer.valueOf(port);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(R.getString("E-AMQP-CONFIG#0001"));
+        }
     }
 
     /**
