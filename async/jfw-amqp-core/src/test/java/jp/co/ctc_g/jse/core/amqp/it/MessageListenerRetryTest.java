@@ -71,6 +71,7 @@ public class MessageListenerRetryTest {
         container = container();
         recoverableContainer = container();
         unrecoverableContainer = container();
+        template.setConnectionFactory(container.getConnectionFactory());
     }
     
     public void init() {
