@@ -11,5 +11,7 @@ before_install:
 install:
   - sudo rabbitmq-plugins enable rabbitmq_management
   - sudo service rabbitmq-server restart
+script:
+  - ./gradlew test --parallel-threads=14
 after_success:
   - ./gradlew jacocoTestReport coveralls
