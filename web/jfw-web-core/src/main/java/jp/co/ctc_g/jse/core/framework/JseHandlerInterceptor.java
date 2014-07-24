@@ -19,7 +19,6 @@ package jp.co.ctc_g.jse.core.framework;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jp.co.ctc_g.jfw.core.exception.ApplicationUnrecoverableException;
 import jp.co.ctc_g.jfw.core.internal.InternalException;
 import jp.co.ctc_g.jfw.core.util.Arrays;
 
