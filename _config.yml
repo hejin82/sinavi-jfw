@@ -16,49 +16,49 @@ author :
   email : sinavi-jframework@ctc-g.co.jp
 
 jfw-util-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-resource-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-exception-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-web-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-web-util-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-mybatis-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-validation-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-amqp-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-csv-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-excel-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-rest-core:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-rest-plugin-jersey:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-rest-plugin-springmvc:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-test:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 jfw-data-mongo-test:
-  version : 1.0.0.0
+  version : 1.0.1.0
 
 baseurl : http://ctc-g.github.io/sinavi-jfw/
 github_project_pages : http://github.com/ctc-g/sinavi-jfw/tree/master
