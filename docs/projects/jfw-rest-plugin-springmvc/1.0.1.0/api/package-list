@@ -1,0 +1,7 @@
+jp.co.ctc_g.jse.core.rest.springmvc.client
+jp.co.ctc_g.jse.core.rest.springmvc.client.exception
+jp.co.ctc_g.jse.core.rest.springmvc.client.handler
+jp.co.ctc_g.jse.core.rest.springmvc.client.interceptor
+jp.co.ctc_g.jse.core.rest.springmvc.server.filter
+jp.co.ctc_g.jse.core.rest.springmvc.server.handler
+jp.co.ctc_g.jse.core.rest.springmvc.server.util
