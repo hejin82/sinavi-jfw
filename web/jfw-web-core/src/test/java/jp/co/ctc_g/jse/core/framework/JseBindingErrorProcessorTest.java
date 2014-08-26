@@ -16,6 +16,8 @@
 
 package jp.co.ctc_g.jse.core.framework;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
@@ -26,6 +28,7 @@ import jp.co.ctc_g.jse.core.util.web.beans.PropertyEditingException;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.MethodInvocationException;
+import org.springframework.context.MessageSourceResolvable;
 import org.springframework.validation.BeanPropertyBindingResult;
 
 public class JseBindingErrorProcessorTest {
@@ -35,6 +38,7 @@ public class JseBindingErrorProcessorTest {
     @Before
     public void setup() {
         processor = new JseBindingErrorProcessor();
+        processor.setJseLocalValidatorFactoryBean(new JseLocalValidatorFactoryBean());
     }
 
     @Test
@@ -46,5 +50,12 @@ public class JseBindingErrorProcessorTest {
         BeanPropertyBindingResult result = new BeanPropertyBindingResult(new T(), "Test");
         processor.processPropertyAccessException(mie, result);
         assertThat(result.getFieldError(), notNullValue());
+    }
+    
+    @Test
+    public void バインドエラーの場合にオブジェクトの配列が返される() {
+        Object[] errors = processor.getArgumentsForBindError("Test", "f");
+        assertThat(errors.length, is(1));
+        assertThat(errors[0], instanceOf(MessageSourceResolvable.class));
     }
 }
