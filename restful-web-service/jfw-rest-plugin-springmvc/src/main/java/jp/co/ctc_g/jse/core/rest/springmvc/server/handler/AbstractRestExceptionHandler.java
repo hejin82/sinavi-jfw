@@ -599,14 +599,14 @@ public abstract class AbstractRestExceptionHandler implements RestExceptionHandl
      * @param status HTTPステータス
      * @return エラーコード
      */
-    abstract String getClientErrorCode(HttpStatus status);
+    protected abstract String getClientErrorCode(HttpStatus status);
 
     /**
      * サーバサイドのエラーコードを取得します。
      * @param status HTTPステータス
      * @return エラーコード
      */
-    abstract String getServerErrorCode(HttpStatus status);
+    protected abstract String getServerErrorCode(HttpStatus status);
     
     /**
      * クライアントエラーの{@link ErrorMessage}のインスタンスを生成します。
