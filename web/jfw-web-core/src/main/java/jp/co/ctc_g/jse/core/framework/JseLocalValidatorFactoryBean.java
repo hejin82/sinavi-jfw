@@ -13,6 +13,7 @@ import jp.co.ctc_g.jse.core.internal.WebCoreInternals;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSourceResolvable;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -82,34 +83,44 @@ public class JseLocalValidatorFactoryBean extends LocalValidatorFactoryBean {
         int index = 0;
         for (Object arg : args) {
             if (arg instanceof DefaultMessageSourceResolvable) {
-                String domain = getDomainName(objectName);
-                List<String> labels = new LinkedList<String>();
-                labels.add(objectName + Errors.NESTED_PATH_SEPARATOR + field);
-                if (domain.equals(objectName)) {
-                    for (String suffix : DOMAIN_SUFFIXES) {
-                        labels.add(objectName + suffix + Errors.NESTED_PATH_SEPARATOR + field);
-                    }
-                } else {
-                    labels.add(domain + Errors.NESTED_PATH_SEPARATOR + field);
-                    String[] filtered = Collections2.filter(Lists.newArrayList(DOMAIN_SUFFIXES), new Predicate<String>() {
-                        @Override
-                        public boolean apply(String suffix) {
-                            return !objectName.endsWith(suffix) ? true : false;
-                        }
-                    }).toArray(new String[1]);
-                    for (String suffix : filtered) {
-                        labels.add(domain + suffix + Errors.NESTED_PATH_SEPARATOR + field);
-                    }
-                }
-                labels.add(field);
-                if (L.isDebugEnabled()) L.debug(R.getString("D-LOCALBEAN#0001"), new Object[] {labels});
-                args[index] = new DefaultMessageSourceResolvable(labels.toArray(new String[1]), field);
+                args[index] = getMessageSourceResolvable(objectName, field);
             }
             index++;
         }
         return args;
     }
-    
+
+    /**
+     * オブジェクト名、フィールド名からメッセージ解決のための{@link DefaultMessageSourceResolvable}のインスタンスを生成します。
+     * @param objectName オブジェクト名
+     * @param field フィールド
+     * @return メッセージ解決のための{@link MessageSourceResolvable}インスタンス
+     */
+    protected MessageSourceResolvable getMessageSourceResolvable(final String objectName, String field) {
+        String domain = getDomainName(objectName);
+        List<String> codes = new LinkedList<String>();
+        codes.add(objectName + Errors.NESTED_PATH_SEPARATOR + field);
+        if (domain.equals(objectName)) {
+            for (String suffix : DOMAIN_SUFFIXES) {
+                codes.add(objectName + suffix + Errors.NESTED_PATH_SEPARATOR + field);
+            }
+        } else {
+            codes.add(domain + Errors.NESTED_PATH_SEPARATOR + field);
+            String[] filtered = Collections2.filter(Lists.newArrayList(DOMAIN_SUFFIXES), new Predicate<String>() {
+                @Override
+                public boolean apply(String suffix) {
+                    return !objectName.endsWith(suffix) ? true : false;
+                }
+            }).toArray(new String[1]);
+            for (String suffix : filtered) {
+                codes.add(domain + suffix + Errors.NESTED_PATH_SEPARATOR + field);
+            }
+        }
+        codes.add(field);
+        if (L.isDebugEnabled()) L.debug(R.getString("D-LOCALBEAN#0001"), new Object[] {codes});
+        return new DefaultMessageSourceResolvable(codes.toArray(new String[1]), field);
+    }
+
     /**
      * オブジェクト名からドメイン名を推測してドメイン名を返します。
      * もし、指定されたサフィックスに該当するものがなければオブジェクト名をドメイン名とします。

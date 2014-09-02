@@ -19,6 +19,7 @@ package jp.co.ctc_g.jse.core.framework;
 import jp.co.ctc_g.jse.core.util.web.beans.PropertyEditingException;
 
 import org.springframework.beans.PropertyAccessException;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DefaultBindingErrorProcessor;
 
@@ -30,12 +31,22 @@ import org.springframework.validation.DefaultBindingErrorProcessor;
  * @author ITOCHU Techno-Solutions Corporation.
  * @see DefaultBindingErrorProcessor
  */
-public class JseBindingErrorProcessor extends DefaultBindingErrorProcessor {
+public class JseBindingErrorProcessor extends DefaultBindingErrorProcessor implements InitializingBean {
+    
+    private JseLocalValidatorFactoryBean factoryBean;
 
     /**
      * デフォルトコンストラクタです。
      */
     public JseBindingErrorProcessor() {}
+
+    /**
+     * {@link JseLocalValidatorFactoryBean}インスタンスを設定します。
+     * @param factoryBean {@link JseLocalValidatorFactoryBean}インスタンス
+     */
+    public final void setJseLocalValidatorFactoryBean(JseLocalValidatorFactoryBean factoryBean) {
+        this.factoryBean = factoryBean;
+    }
 
     /**
      * {@inheritDoc}
@@ -50,5 +61,23 @@ public class JseBindingErrorProcessor extends DefaultBindingErrorProcessor {
         } else {
             super.processPropertyAccessException(e, bindingResult);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        if (factoryBean == null) {
+            factoryBean = new JseLocalValidatorFactoryBean();
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Object[] getArgumentsForBindError(final String objectName, String field) {
+        return new Object[] { factoryBean.getMessageSourceResolvable(objectName, field) };
     }
 }
