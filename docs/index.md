@@ -267,7 +267,7 @@ group: navigation
       </thead>
       <tbody>
         <tr>
-          <td rowspan="3">JDK</td>
+          <td>JDK</td>
           <td>Oracle</td>
           <td>7/8</td>
         </tr>
