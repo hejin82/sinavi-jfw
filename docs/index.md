@@ -267,6 +267,11 @@ group: navigation
       </thead>
       <tbody>
         <tr>
+          <td rowspan="3">JDK</td>
+          <td>Oracle</td>
+          <td>7/8</td>
+        </tr>
+        <tr>
           <td rowspan="3">アプリケーションサーバ</td>
           <td>Apache Tomcat</td>
           <td>6.0/7.0</td>
