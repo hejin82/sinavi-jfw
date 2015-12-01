@@ -9,13 +9,13 @@ SINAVI J-Frameworkでは通常の利用においては、画面IDはJSPで定義
 
 現在処理通のJSPが生成する画面にIDを付加する場合、以下のようにします。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/41f85b1d82e9aadf9e55.js"></script>
+<script src="https://gist.github.com/t-oi/41f85b1d82e9aadf9e55.js"></script>
 
 ただし、モーダルダイアログを利用するなどして、サーバに通知することなく画面が遷移する場合、
 JSPにて付加する方法ではユーザに表示されている画面IDとサーバが管理している画面IDが一致しなくなる可能性があります。  
 そのような場合は、明示的に画面IDの追加や削除をする必要があります。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/853033dc1ca0a5c49d92.js"></script>
+<script src="https://gist.github.com/t-oi/853033dc1ca0a5c49d92.js"></script>
  
 このようにすると、現在表示されている画面のIDを設定できます。  
 

@@ -10,6 +10,6 @@ title: "アプリケーションをロードし直すことなく、リソース
 
 ※詳細はSpringの [ReloadableResourceBundleMessageSource][ReloadableResourceBundleMessageSource] を参照してください。
 
-<script src="https://gist.github.com/tetsuya-oikawa/d4aa8b279ac7ecd9b82c.js"></script>
+<script src="https://gist.github.com/t-oi/d4aa8b279ac7ecd9b82c.js"></script>
 
 [ReloadableResourceBundleMessageSource]: http://docs.spring.io/spring/docs/4.0.1.RELEASE/javadoc-api/org/springframework/context/support/ReloadableResourceBundleMessageSource.html

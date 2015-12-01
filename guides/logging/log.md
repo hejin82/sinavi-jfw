@@ -13,7 +13,7 @@ title: "ユーザ、セッションIDなどをログに出力したい場合は�
 まず、SLF4jのMDCにユーザIDやセッションIDなどを登録するServletFilterを用意します。  
 例えば、ユーザIDがPrincipalに格納されている場合、
 
-<script src="https://gist.github.com/tetsuya-oikawa/07c1a45eb3917284804d.js"></script>
+<script src="https://gist.github.com/t-oi/07c1a45eb3917284804d.js"></script>
 
 のようにSLF4jのMDCに登録します。  
 
@@ -25,7 +25,7 @@ MDCに登録した値をログに出力することができます。
 {% endhighlight %}
 のようにログを出力する場合、
 
-<script src="https://gist.github.com/tetsuya-oikawa/42d3f0eff65f42dcfffa.js"></script>
+<script src="https://gist.github.com/t-oi/42d3f0eff65f42dcfffa.js"></script>
 
 のようにレイアウトを設定することで、出力できます。  
 
@@ -37,7 +37,7 @@ MDCの値を参照する際は、
 
 これで、ログを出力したときにユーザIDやセッションIDがログに出力されます。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/816c94080ab640c13619.js"></script>
+<script src="https://gist.github.com/t-oi/816c94080ab640c13619.js"></script>
 
 ※出力例
 {% highlight text %}

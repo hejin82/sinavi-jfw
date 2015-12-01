@@ -9,7 +9,7 @@ SINAVI J-Frameworkのリソース管理機能(jp.co.ctc_g.jfw.core.resource.Rs#f
 プロパティファイルより取得するサンプルコードは以下の通りです。  
 
 <p>プロパティファイル</p>
-<script src="https://gist.github.com/tetsuya-oikawa/9041f492c1741ec7909a.js"></script>
+<script src="https://gist.github.com/t-oi/9041f492c1741ec7909a.js"></script>
 
 <p>プロパティ値取得サンプルコード</p>
-<script src="https://gist.github.com/tetsuya-oikawa/2e8ce89403569e29c012.js"></script>
+<script src="https://gist.github.com/t-oi/2e8ce89403569e29c012.js"></script>

@@ -20,12 +20,12 @@ if 要素の利用は非常に単純で、test 属性に評価式を実装する
 例えば、パラメータが null でない場合のみ条件式を付加するケースを考えてみましょう。  
 下記の例ではcondition パラメータが null でない場合のみ、SELECT文に AND condition like ? といった条件式が付加されます。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/df15a0212207b49bfa20.js"></script>
+<script src="https://gist.github.com/t-oi/df15a0212207b49bfa20.js"></script>
 
 別の条件のケースについても見てみましょう。パラメータが特定の文字列かどうかで動的にSQL Queryを構築するケースです。  
 下記の例ではcondition パラメータが 'VALID' というも文字列の場合のみ、SELECT文に AND condition like ? といった条件式が付加されます。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/3d6f5d6e674895477718.js"></script>
+<script src="https://gist.github.com/t-oi/3d6f5d6e674895477718.js"></script>
 
 if 要素の利用法は以上になります。
 
@@ -39,6 +39,6 @@ choose 要素は、多くの選択肢の中から一つを選んで適用した�
 具体的な例を見てみましょう。
 下記の例は、name パラメータが null でなければ AND name like ? を付加し、 name パラメータが null かつ address パラメータが null でなければ AND adress like ? を付加、どちらにも該当しなければ AND tel like '03%' を条件に付加します。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/e2a7b4344de7aca04e8b.js"></script>
+<script src="https://gist.github.com/t-oi/e2a7b4344de7aca04e8b.js"></script>
 
 choose 要素の利用法は以上になります。

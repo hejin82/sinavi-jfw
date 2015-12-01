@@ -28,7 +28,7 @@ MyBatis の Mapper XML 結果マッピング機能を利用し、ネストした
 
 データベースに発行する SQL Query は次の通りです。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/145afee5c559a43da81d.js"></script>
+<script src="https://gist.github.com/t-oi/145afee5c559a43da81d.js"></script>
 
 SQL Query の実行結果として下表のような結果が得られます。  
 この実行結果をSummaryクラスとSummaryクラスに定義されているDetailクラスのList型のプロパティにマッピングします。  
@@ -104,13 +104,13 @@ SQL Query の実行結果として下表のような結果が得られます。
 **collection 要素** を用いてネストしたマッピング定義を行うのが重要なポイントです。  
 collection 要素では **ofType 属性** を使用してListに含まれるJavaオブジェクトの型を定義する必要があります。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/c7c16936d79882907fbd.js"></script>
+<script src="https://gist.github.com/t-oi/c7c16936d79882907fbd.js"></script>
 
 このようにネストしたマッピング定義を行うことにより、Summary-Detailのようなデータ構造(いわゆる has-manyのデータ構造)に SQL Query の結果セッをマッピングするこのができます。  
 また、select 要素の定義例を以下に示します。  
 select 要素の定義は単表に対する select ステートメント を定義するケースと大差ありません。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/eba07a1a8e479802112e.js"></script>
+<script src="https://gist.github.com/t-oi/eba07a1a8e479802112e.js"></script>
 
 ### ネストしたデータの検索を別の SQL Query を発行し取得する方法
 
@@ -119,16 +119,16 @@ Mapper XML にネストしたデータの検索を行う SQL Query 別途定義�
 
 select 要素の定義は、SUMMARY表に対する SQL Query の定義とDETAIL表に対する SQL Query の定義を別々に行ます。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/ad93a511a3617e0a4a0a.js"></script>
+<script src="https://gist.github.com/t-oi/ad93a511a3617e0a4a0a.js"></script>
 
-<script src="https://gist.github.com/tetsuya-oikawa/8d43041a507deecca559.js"></script>
+<script src="https://gist.github.com/t-oi/8d43041a507deecca559.js"></script>
 
 次に resultMap 要素によるマッピングの定義ですが、ここでも **collection 要素** を利用します。  
 ポイントは以下の２点です。  
   * select 属性を利用してネストした SQL Query の select ステートメントを指定する。  
   * column 属性でネストされた select ステートメントに引数として渡される列名、あるいは列の別名を指定する。  複数のパラメータを渡す場合は、column="{prop1=col1,prop2=col2} のように指定することが可能。  
 
-<script src="https://gist.github.com/tetsuya-oikawa/7375bf001b8ba11e1f27.js"></script>
+<script src="https://gist.github.com/t-oi/7375bf001b8ba11e1f27.js"></script>
 
 なお、この方法の利用には注意が必要です。  ここで説明する SQL Query をネストさせる方法は、SQL Query の定義は簡単ですが性能面でのオーバーヘッドが高く利用できるケースは限定されます。  例えばデータベースの検索結果を一覧表示するような予め必要であることが分かっているデータをわざわざネストした SQL Query で検索することは性能面の理由により推奨していません。  
 Lazy Loading 機能と組合せ必要になった段階でのみネストした SQL Query が実行されるようなケースにおいて利用することを推奨します。  

@@ -20,7 +20,7 @@ SINAVI J-Frameworkの入力値検証は、Spring MVC がサポートしている
 また、入力値検証に失敗した場合の遷移先は@PostBack.Actionというアノテーションで設定します。  
 例えば、createというパスが実行されたタイミングでFooクラスに対して入力値検証を有効にし、入力値検証に失敗したときにはreadyToCreateのパスに遷移する場合、
 
-<script src="https://gist.github.com/tetsuya-oikawa/0bb183b88d9a548abf30.js"></script>
+<script src="https://gist.github.com/t-oi/0bb183b88d9a548abf30.js"></script>
 
 というように設定することで実現できます。  
 
@@ -28,22 +28,22 @@ SINAVI J-Frameworkの入力値検証は、Spring MVC がサポートしている
 
 例えば、フラグ値を保持するプロパティに対して数値チェックと長さチェックを実行する場合、
 
-<script src="https://gist.github.com/tetsuya-oikawa/6b495aff2005d20884a3.js"></script>
+<script src="https://gist.github.com/t-oi/6b495aff2005d20884a3.js"></script>
 
 というように設定することで実現できます。  
 
 最後に入力値検証に失敗した場合にエラーメッセージの表示には、SINAVI J-Frameworkのメッセージタグライブラリを利用します。  
 利用方法は、
 
-<script src="https://gist.github.com/tetsuya-oikawa/dd402fe2c48fa3f3fb73.js"></script>
+<script src="https://gist.github.com/t-oi/dd402fe2c48fa3f3fb73.js"></script>
 
 または
 
-<script src="https://gist.github.com/tetsuya-oikawa/c682fc6c5d62f1ba0547.js"></script>
+<script src="https://gist.github.com/t-oi/c682fc6c5d62f1ba0547.js"></script>
 
 これだけです。エラーメッセージを表示したい部分に
 
-<script src="https://gist.github.com/tetsuya-oikawa/dd402fe2c48fa3f3fb73.js"></script>
+<script src="https://gist.github.com/t-oi/dd402fe2c48fa3f3fb73.js"></script>
 
 を指定することで出力されます。  
 また、特定の入力項目のみ表示したい場合、property属性に指定すると指定されたもののみ出力することができます。  
@@ -57,7 +57,7 @@ SINAVI J-Frameworkの入力値検証は、Spring MVC がサポートしている
 例えば、From-Toのような範囲検索を行う際は入力された値の前後関係をチェックする必要があります。  
 日付値を保持する2つのプロパティに対して前後関係をチェックを実行する場合、
 
-<script src="https://gist.github.com/tetsuya-oikawa/521475cefd7372bc4933.js"></script>
+<script src="https://gist.github.com/t-oi/521475cefd7372bc4933.js"></script>
 
 というように設定することで実現できます。  
 

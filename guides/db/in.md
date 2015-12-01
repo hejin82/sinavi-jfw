@@ -11,7 +11,7 @@ IN句を利用したSQL Queryを構成するには、MyBatisの動的SQLの機�
 
 SELECT ステートメントの指定は次の通りです。
 
-<script src="https://gist.github.com/tetsuya-oikawa/685754c0987da094e365.js"></script>
+<script src="https://gist.github.com/t-oi/685754c0987da094e365.js"></script>
 
 **foreach 要素** を利用するのが重要なポイントです。  
 foreach 要素は非常に強力で、イテレーション処理の対象となるコレクションを指定する **collection 属性** と、ループ内で要素を格納する変数 item、ループ回数を格納する 変数 index を宣言することができます。  

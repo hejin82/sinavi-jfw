@@ -10,4 +10,4 @@ Springの設定ファイルに次のような定義がされている部分に
 クラスパスからの相対パスでリソースファイルのファイル名を指定してください。  
 
 <p>Spring設定ファイル</p>
-<script src="https://gist.github.com/tetsuya-oikawa/5551983016b60de833a7.js"></script>
+<script src="https://gist.github.com/t-oi/5551983016b60de833a7.js"></script>
