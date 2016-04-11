@@ -15,7 +15,10 @@ SINAVI J-Frameworkでは画面IDによるパンくずを表示するためのタ
 
 表示は簡単です。  
 
-<script src="https://gist.github.com/t-oi/4cd81b6f6b80451ada49.js"></script>
+```
+[pankuzu.jsp]
+<vid:pankuzu />
+```
 
 これだけです。デフォルトでは、例えばユーザが画面A、画面B、画面Cと遷移した場合、以下のように表示されます。  
 
@@ -26,30 +29,55 @@ SINAVI J-Frameworkでは画面IDによるパンくずを表示するためのタ
 パンくずの表示に画面IDを利用するため、以下のように画面IDを定義し、  
 pankuzu属性にtrueを指定する必要があります。  
 
-<script src="https://gist.github.com/t-oi/39f11e7ede14d6c75845.js"></script>
+```
+[pankuzu.jsp]
+<vid:is id="VID#0001" pankuzu="true" />
+```
 
 これは、以下のコードと等価です。  
 
-<script src="https://gist.github.com/t-oi/eb3701487fd0ed077451.js"></script>
+```
+ViewId vid = new ViewId("VID#0001");
+vid.setPankuzu(true);
+vid.fill(request);
+ViewId.is(vid, request);
+```
 
 この場合はパンクズに画面IDが表示されてしまうため、  
 
-<script src="https://gist.github.com/t-oi/c3e9f9870b2db76883e3.js"></script>
+```
+[pankuzu.jsp]
+<vid:is id="VID#0001" pankuzu="true" label="画面A" />
+```
  
 とすることで、「画面A」がパンクズとして表示されます。 これと等価なコードは、以下の通りです。  
 
-<script src="https://gist.github.com/t-oi/35f4f8df3b4a6b2fcc10.js"></script>
+```
+ViewId vid = new ViewId("VID#0001");
+vid.setPankuzu(true);
+vid.setLabel("画面A");
+vid.fill(request);
+ViewId.is(vid, request);
+```
 
 パンくずのURLはデフォルトで設定されますが、 任意の指定も可能です。  
 
 変更する場合、以下のようにurl属性に任意のURLを指定します。  
 このときurl属性にはコンテキストパスより指定してください。  
 
-<script src="https://gist.github.com/t-oi/c3e9f9870b2db76883e3.js"></script>
+```
+[pankuzu.jsp]
+<vid:is id="VID#0001" pankuzu="true" label="画面A" />
+```
 
 さらに、パンくずにリクエストパラメータを追加することもできます。  
 
-<script src="https://gist.github.com/t-oi/f7b58439f45163f10c4c.js"></script>
+```
+[pankuzu.jsp]
+<vid:is id="VID#0001" pankuzu="true" label="画面A" url="/foo/bar/baz.do">
+ <vid:param name="name" value="value" />
+</vid:is>
+```
 
 ※このタグライブラリの詳細は [PankuzuTag][PankuzuTag] のjavadocを参照してください。
 

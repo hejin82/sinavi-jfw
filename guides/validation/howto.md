@@ -20,7 +20,15 @@ SINAVI J-Frameworkの入力値検証は、Spring MVC がサポートしている
 また、入力値検証に失敗した場合の遷移先は@PostBack.Actionというアノテーションで設定します。  
 例えば、createというパスが実行されたタイミングでFooクラスに対して入力値検証を有効にし、入力値検証に失敗したときにはreadyToCreateのパスに遷移する場合、
 
-<script src="https://gist.github.com/t-oi/0bb183b88d9a548abf30.js"></script>
+```
+[HogeController.java]
+@Controller
+public class HogeController {
+  @PostBack.Action(Controller.FORWARD + "/readyToCreate") //入力値検証に失敗したらここで指定したアクションパスやJSPに遷移
+  public void create(@Validated @ModelAttribute Foo domain) { //入力値検証対象を有効に設定
+  }
+}
+```
 
 というように設定することで実現できます。  
 
@@ -28,22 +36,44 @@ SINAVI J-Frameworkの入力値検証は、Spring MVC がサポートしている
 
 例えば、フラグ値を保持するプロパティに対して数値チェックと長さチェックを実行する場合、
 
-<script src="https://gist.github.com/t-oi/6b495aff2005d20884a3.js"></script>
+```
+[Foo.java]
+public class Foo {
+    @MaxLength(1)
+    @Alphameric
+    private Strig flag;
+    public void setFlag(String Flag) {
+        this.flag = flag;
+    }
+    public String getFlag() {
+        return flag;
+    }
+}
+```
 
 というように設定することで実現できます。  
 
 最後に入力値検証に失敗した場合にエラーメッセージの表示には、SINAVI J-Frameworkのメッセージタグライブラリを利用します。  
 利用方法は、
 
-<script src="https://gist.github.com/t-oi/dd402fe2c48fa3f3fb73.js"></script>
+```
+[messages.jsp]
+<jse:messages />
+```
 
 または
 
-<script src="https://gist.github.com/t-oi/c682fc6c5d62f1ba0547.js"></script>
+```
+[messages.jsp]
+<jse:messages property="flag" />
+```
 
 これだけです。エラーメッセージを表示したい部分に
 
-<script src="https://gist.github.com/t-oi/dd402fe2c48fa3f3fb73.js"></script>
+```
+[messages.jsp]
+<jse:messages />
+```
 
 を指定することで出力されます。  
 また、特定の入力項目のみ表示したい場合、property属性に指定すると指定されたもののみ出力することができます。  
@@ -57,7 +87,16 @@ SINAVI J-Frameworkの入力値検証は、Spring MVC がサポートしている
 例えば、From-Toのような範囲検索を行う際は入力された値の前後関係をチェックする必要があります。  
 日付値を保持する2つのプロパティに対して前後関係をチェックを実行する場合、
 
-<script src="https://gist.github.com/t-oi/521475cefd7372bc4933.js"></script>
+```
+[Foo.java]
+@BeforeEqualsTo(from = "fromSalesDate", to = "toSalesDate")
+@AfterEqualsTo(from = "toSalesDate", to = "fromSalesDate")
+public class Foo {
+    private Date fromSalesDate;
+    private Date toSalesDate;
+    ・・・
+}
+```
 
 というように設定することで実現できます。  
 

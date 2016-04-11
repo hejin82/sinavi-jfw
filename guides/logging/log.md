@@ -13,7 +13,43 @@ title: "ユーザ、セッションIDなどをログに出力したい場合は�
 まず、SLF4jのMDCにユーザIDやセッションIDなどを登録するServletFilterを用意します。  
 例えば、ユーザIDがPrincipalに格納されている場合、
 
-<script src="https://gist.github.com/t-oi/07c1a45eb3917284804d.js"></script>
+```
+[AuthLoggingFilter.java]
+public class AuthLoggingFilter implements Filter {
+    @Override
+    public void init(FilterConfig config) throws ServletException {};
+    
+    @Override
+    public void destory() {};
+    
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
+        ServletException {
+        
+        HttpServletRequest req = (HttpServletRequest) request;
+        Principal auth = req.getUserPrincipal();
+        String userId = "";
+        if (auth != null) {
+            userId = auth.getName();
+        }
+        if (!"".equals(name)) {
+            MDC.put("userId", userId);
+        } else {
+            MDC.put("userId", "未設定");
+        }
+        HttpSession session = r.getSession(false);
+        if (session != null) {
+            MDC.put("sessionId", session.getId());
+        }
+        try {
+            chain.doFilter(request, response);
+        } finally {
+            MDC.remove("loginId");
+            MDC.remove("sessionId");
+        }
+    }
+}
+```
 
 のようにSLF4jのMDCに登録します。  
 
@@ -25,7 +61,14 @@ MDCに登録した値をログに出力することができます。
 {% endhighlight %}
 のようにログを出力する場合、
 
-<script src="https://gist.github.com/t-oi/42d3f0eff65f42dcfffa.js"></script>
+```
+[logback.xml]
+<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+  <encoder>
+    <Pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} [%5p] [userId=%X{userId}] [sessionId=%X{sessionId}] %m %n" />
+  </encoder>
+</appender>
+```
 
 のようにレイアウトを設定することで、出力できます。  
 
@@ -37,7 +80,17 @@ MDCの値を参照する際は、
 
 これで、ログを出力したときにユーザIDやセッションIDがログに出力されます。  
 
-<script src="https://gist.github.com/t-oi/816c94080ab640c13619.js"></script>
+```
+[HogeServiceImpl.java]
+@Service
+public class HogeServiceImpl implements HogeService {
+    private static final Log L = LogFactory.getLog();
+    public void findById(String id) {
+        L.debug("検索条件は" + id + "です。");
+    }
+}
+
+```
 
 ※出力例
 {% highlight text %}

@@ -9,21 +9,63 @@ SINAVI J-Frameworkの自動プロパティ設定機能を利用すると作成�
 この自動プロパティ設定機能を有効にするにはSpringの設定ファイル(Root-Context.xml)にトランザクション開始時刻を設定するインターセプタの設定と  
 リクエストに関連付けらているjava.security.Principalをスレッドローカルに登録するフィルタの設定を行う必要があります。  
 
-<script src="https://gist.github.com/t-oi/887df6abda4ba0a983a6.js"></script>
+```
+[AOPContext.xml]
+<aop:config>
+  <aop:pointcut id="servicePointcut" expression="execution(* ..*Service.*(..))" >
+  <aop:advisor pointcut-ref="servicePointcut" advice-ref="transactionAdvice" >
+  <aop:advisor pointcut-ref="servicePointcut" advice-ref="transactionTimeAdvice" >
+</aop:config>
+
+<tx:advice id="transactionAdvice" transaction-manager="transactionManager>
+  ...
+</tx:advice>
+
+<bean id="transactionTimeAdvice" class="jp.co.ctc_g.jfw.profill.util.TransactionTimeInterceptor" >
+```
 
 これで自動プロパティ設定機能を利用することができます。  
 次にJavaBeansに値を設定するためには対象のJavaBeansのプロパティのアクセサメソッド(setterメソッド)に  
 JavaBeansの対象プロパティのsetterメソッドに自動プロパティ設定機能のアノテーションを付与することで  
 値が自動で設定されます。
 
-<script src="https://gist.github.com/t-oi/a3b97caccb385ed86441.js"></script>
+```
+[Emp.java]
+public class Emp implements {
+    private String empno;
+    private String empName;
+    private Date hireDate;
+    private Date createStamp;
+    private String createUserId;
+    private Date updateStamp;
+    private String updateUserId;
+    // 一部アクセサメソッド省略
+
+    @UpdateStamp
+    public void setCreateStamp(Date createStamp) {
+        this.createStamp = createStamp;
+    }
+    public Date getCreateStamp() { return createStamp; }
+
+    @UpdateUser
+    public String setCreateUserId(String createUserId) {
+        this.createUserId = createUserId;
+    }
+}
+```
+
 自動プロパティ設定機能の使い方は簡単なのですが、ここで注意事項があります。  
 
 自動プロパティ設定機能はパフォーマンスに配慮しているため、複数のデータに対しては設定しません。  
 例えば、社員情報のリストや配列でデータを登録・更新する場合には  
 
 
-<script src="https://gist.github.com/t-oi/1e31afb23e56a054f69e.js"></script>
+```
+[EmpService.java]
+public interface EmpService {
+    void create(List<Emp> emps);
+}
+```
 
 のように定義することがありますが、このときは自動プロパティ設定機能は何も設定しません。  
 必ず単一のJavaBeansである必要があります。  
@@ -31,4 +73,14 @@ JavaBeansの対象プロパティのsetterメソッドに自動プロパティ�
 今度はトランザクション境界の問題があり、単一にすることはできません。  
 ではどうするかというとDaoを呼び出されるタイミングで実行するようにインターセプタを設定することで解決することができます。  
 
-<script src="https://gist.github.com/t-oi/9ce9d1e264b29708cd20.js"></script>
+```
+[AOPContext.xml]
+<aop:config>
+  <aop:pointcut id="servicePointcut" expression="execution(* ..*Service.*(..))" >
+  <aop:pointcut id="daoPointcut" expression="execution(* ..*Dao.*(..))" >
+  <aop:advisor pointcut-ref="servicePointcut" advice-ref="transactionAdvice" >
+  <aop:advisor pointcut-ref="servicePointcut" advice-ref="transactionTimeAdvice" >
+  <aop:advisor pointcut-ref="daoPointcut" advice-ref="transactionTimeAdvice" >
+</aop:config>
+```
+
