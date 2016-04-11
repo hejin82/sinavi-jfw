@@ -10,4 +10,20 @@ Springの設定ファイルに次のような定義がされている部分に
 クラスパスからの相対パスでリソースファイルのファイル名を指定してください。  
 
 <p>Spring設定ファイル</p>
-<script src="https://gist.github.com/t-oi/5551983016b60de833a7.js"></script>
+```
+[Context.xml]
+<bean id="messageSourceLocator" class="jp.co.ctc_g.jfw.core.resource.MessageSourceLocator" >
+<bean id="messageSource"
+  class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+  <property name="basenames">
+    <list>
+      <value>classpath:FrameworkResources</value>
+      <value>classpath:ApplicationResources</value>
+      <value>classpath:ErrorResources</value>
+      <value>classpath:ValidationResources</value>
+      <value>classpath:NewResources</value> <!-- 追加するリソースファイルのファイル名を指定してください。 -->
+    </list>
+  </property>
+  <property name="defaultEncoding" value="UTF-8" >
+</bean>
+```

@@ -10,6 +10,19 @@ title: "アプリケーションをロードし直すことなく、リソース
 
 ※詳細はSpringの [ReloadableResourceBundleMessageSource][ReloadableResourceBundleMessageSource] を参照してください。
 
-<script src="https://gist.github.com/t-oi/d4aa8b279ac7ecd9b82c.js"></script>
+```
+[Context.xml]
+<bean id="messageSourceLocator" class="jp.co.ctc_g.jfw.core.resource.MessageSourceLocator" />
+<!-- class属性をデフォルト値よりReloadableResourceBundleMessageSourceに変更してください。 -->
+<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+  <property name="basenames">
+    <list>
+      <value>file:/home/user/SystemConfig</value>
+    </list>
+  </property>
+  <property name="cacheSeconds" value="60" />
+  <property name="defaultEncoding" value="UTF-8" />
+</bean>
+```
 
 [ReloadableResourceBundleMessageSource]: http://docs.spring.io/spring/docs/4.0.1.RELEASE/javadoc-api/org/springframework/context/support/ReloadableResourceBundleMessageSource.html

@@ -23,14 +23,32 @@ ResultHandler インタフェースに定義されているメソッドは handl
 この handleResult(ResultContext) メソッド に逐次処理の実装を行うだけです。  
 下記のように ResultContext の getResultObject() メソッドを通して検索結果を逐次取得し目的の処理を実装します。  
 
-<script src="https://gist.github.com/t-oi/bde8e069d7bdb8bbe69c.js"></script>
+```
+[SampleResultHandler.java]
+public class SampleResultHandler
+        implements ResultHandler {
+
+    @Override
+    public void handleResult(ResultContext context) {
+        Sample s = (Sample) context.getResultObject();
+        String id = s.getId();
+        // 逵∫払
+    }
+}
+```
 
 次に、Daoの実装です。  
 基本的なCRUD処理と同様に逐次処理についても SqlSession インタフェースを通して処理を呼出します。  
 SqlSession には ResultHandler を引数に渡す select メソッドが定義されており、この select メソッドに ResultHandler のインタスタンスを渡しSQL ステートメントを実行します。  
 MyBatis がSQL ステートメントを実行後、検索結果を順次取得する度に ResultHandler#handleResult(ResultContext) メソッドを起動しすることによって順次処理が実現されます。  
 
-<script src="https://gist.github.com/t-oi/a464981adcf4fdcf4767.js"></script>
+```
+[SampleDaoImpl.java]
+@Override
+public void selectByResultHandler() {
+    getSqlSession().select(SampleDaoImpl.class.getName() + ".selectByResultHandler", new SampleResultHandler());
+}
+```
 
 SqlSession インタフェースには下記の３種類の select メソッドが定義されます。  
 目的の処理に合わせて適宜選択し実装を行って下さい。  

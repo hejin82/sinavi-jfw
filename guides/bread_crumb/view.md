@@ -15,14 +15,20 @@ SINAVI J-Frameworkのパンくずにおいてデフォルト表示を変更す�
 SINAVI J-Frameworkではパンくず表示時に以下のキーで設定されている値をテンプレートとして利用しています。  
 これはJSP時のBODY要素指定と同じ意味になります。また、テンプレート内の${url}や${query}、${label}は、それぞれ画面IDオブジェクトの対応するプロパティ値で置換されます。  
 
-<script src="https://gist.github.com/t-oi/8394d8c7db58e8b35811.js"></script>
+```
+[ApplicationResource.properties]
+jp.co.ctc_g.jfw.vid.PankuzuTag.pankuzu_template=<span class="jfw_vid_pankuzu_item"><a href="${url}${query}">${label}</a></span>
+```
 
 このデフォルト設定されているテンプレートを変更することによって、パンくずの表示をカスタマイズすることができます。  
 カスタマイズする場合はファイル名がFrameworkResources.propertiesのプロパティファイルに  
 キー(jp.co.ctc_g.jfw.vid.PankuzuTag.pankuzu_template)で値をオーバーライドすれば変更できます。  
 例えば、span要素からli要素に変更し、表示したいものであれば、  
 
-<script src="https://gist.github.com/t-oi/5b8eff10a8f82b9ad8cd.js"></script>
+```
+[ApplicationResource.properties]
+jp.co.ctc_g.jfw.vid.PankuzuTag.pankuzu_template=<li class="pankuzu_item"><a href="${url}${query}">${label}</a></li>
+```
 
 というように設定することで実現できます。  
 
@@ -33,7 +39,12 @@ SINAVI J-Frameworkではパンくず表示時に以下のキーで設定され�
 上記はパンくず表示全体に影響するカスタマイズ方法ですが、ある特定の画面のみパンくず表示を変更したい場合は  
 パンくずのタグライブラリのJSP-BODY要素を編集して下さい。例えば、アンカーを非表示にしたいのであれば、  
 
-<script src="https://gist.github.com/t-oi/4cff467854d33af97761.js"></script>
+```
+[pankuzu.jsp]
+<vid:pankuzu var="vid">
+  ${vid.label}
+</vid:pankuzu>
+```
 
 というように設定することで実現できます。  
 
